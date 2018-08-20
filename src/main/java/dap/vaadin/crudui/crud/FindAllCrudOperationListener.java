@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 @FunctionalInterface
 public interface FindAllCrudOperationListener<T> extends Serializable {

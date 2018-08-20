@@ -5,7 +5,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class TeamRepository {
 

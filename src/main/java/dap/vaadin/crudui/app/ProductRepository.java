@@ -3,7 +3,7 @@ package dap.vaadin.crudui.app;
 import java.util.List;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class ProductRepository {
 

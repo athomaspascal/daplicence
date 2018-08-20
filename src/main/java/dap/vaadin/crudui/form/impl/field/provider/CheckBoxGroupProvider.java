@@ -6,7 +6,7 @@ import com.vaadin.ui.ItemCaptionGenerator;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class CheckBoxGroupProvider<T> extends AbstractListingProvider<CheckBoxGroup<T>, T> {
 

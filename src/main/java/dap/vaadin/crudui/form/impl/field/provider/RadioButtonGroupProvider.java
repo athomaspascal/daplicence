@@ -6,7 +6,7 @@ import com.vaadin.ui.RadioButtonGroup;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class RadioButtonGroupProvider<T> extends AbstractListingProvider<RadioButtonGroup<T>, T> {
 

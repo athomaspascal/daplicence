@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public interface CrudListener<T> extends Serializable {
 

@@ -3,7 +3,7 @@ package dap.vaadin.crudui.crud;
 import java.io.Serializable;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 @FunctionalInterface
 public interface AddOperationListener<T> extends Serializable {

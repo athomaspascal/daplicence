@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 @Entity
 @Table(name = "product_")

@@ -1,7 +1,7 @@
 package dap.vaadin.crudui.app;
 
 /**
- * @author Alejandro Duarte
+ * @author  
  */
 public enum Gender {
 

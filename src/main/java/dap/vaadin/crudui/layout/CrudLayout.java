@@ -4,7 +4,7 @@ import com.vaadin.ui.Component;
 import dap.vaadin.crudui.crud.CrudOperation;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public interface CrudLayout extends Component {
 

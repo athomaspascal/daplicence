@@ -6,7 +6,7 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 public class VerticalCrudLayout extends AbstractTwoComponentsCrudLayout {
 

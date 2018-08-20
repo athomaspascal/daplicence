@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Date;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 public class DefaultFieldProvider implements FieldProvider {
 

@@ -7,7 +7,7 @@ import dap.vaadin.crudui.layout.CrudLayout;
 import java.util.Collections;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
 

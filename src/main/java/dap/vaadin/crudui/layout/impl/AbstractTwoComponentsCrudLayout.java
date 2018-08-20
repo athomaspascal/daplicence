@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 public abstract class AbstractTwoComponentsCrudLayout extends Composite implements CrudLayout {
 

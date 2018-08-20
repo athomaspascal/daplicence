@@ -6,7 +6,7 @@ import com.vaadin.ui.ListSelect;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class ListSelectProvider<T> extends AbstractListingProvider<ListSelect<T>, T> {
 

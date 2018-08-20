@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class WindowBasedCrudLayout extends Composite implements CrudLayout {
 

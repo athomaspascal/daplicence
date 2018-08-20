@@ -5,7 +5,7 @@ import dap.vaadin.crudui.form.CrudFormFactory;
 import dap.vaadin.crudui.layout.CrudLayout;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public interface Crud<T> extends Component {
 

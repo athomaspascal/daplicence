@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class JPAService {
 

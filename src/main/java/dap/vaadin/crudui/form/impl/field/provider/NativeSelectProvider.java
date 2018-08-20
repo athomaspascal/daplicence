@@ -6,7 +6,7 @@ import com.vaadin.ui.NativeSelect;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class NativeSelectProvider<T> extends AbstractListingProvider<NativeSelect<T>, T> {
 

@@ -8,7 +8,7 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 public class HorizontalSplitCrudLayout extends AbstractTwoComponentsCrudLayout {
 

@@ -18,7 +18,7 @@ import dap.vaadin.crudui.layout.impl.WindowBasedCrudLayout;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class GridCrud<T> extends AbstractCrud<T> {
 

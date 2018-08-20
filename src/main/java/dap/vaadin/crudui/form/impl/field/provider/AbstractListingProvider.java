@@ -8,7 +8,7 @@ import dap.vaadin.crudui.form.FieldProvider;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public abstract class AbstractListingProvider<F extends AbstractListing, T> implements FieldProvider {
 

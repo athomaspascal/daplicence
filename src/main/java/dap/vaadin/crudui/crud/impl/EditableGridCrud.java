@@ -16,7 +16,7 @@ import dap.vaadin.crudui.layout.impl.WindowBasedCrudLayout;
 import java.util.List;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class EditableGridCrud<T> extends GridCrud<T> {
 

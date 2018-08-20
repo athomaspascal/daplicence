@@ -5,7 +5,7 @@ import com.vaadin.data.HasValue;
 import java.io.Serializable;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 @FunctionalInterface
 public interface FieldProvider extends Serializable {

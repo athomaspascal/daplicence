@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.function.Consumer;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public interface CrudFormFactory<T> extends Serializable {
 

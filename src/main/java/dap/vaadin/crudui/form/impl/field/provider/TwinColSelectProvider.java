@@ -6,7 +6,7 @@ import com.vaadin.ui.TwinColSelect;
 import java.util.Collection;
 
 /**
- * @author Alejandro Duarte
+ * @author
  */
 public class TwinColSelectProvider<T> extends AbstractListingProvider<TwinColSelect<T>, T> {
 

@@ -1,7 +1,7 @@
 package dap.vaadin.crudui.crud;
 
 /**
- * @author Alejandro Duarte.
+ * @author  .
  */
 public class CrudOperationException extends RuntimeException {
 
