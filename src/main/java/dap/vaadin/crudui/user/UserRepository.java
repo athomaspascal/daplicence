@@ -1,4 +1,6 @@
-package dap.vaadin.crudui.app;
+package dap.vaadin.crudui.user;
+
+import dap.vaadin.crudui.app.JPAService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

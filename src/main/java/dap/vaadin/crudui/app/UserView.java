@@ -5,6 +5,10 @@ import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 import com.vaadin.ui.renderers.DateRenderer;
 import com.vaadin.ui.renderers.TextRenderer;
+import dap.vaadin.crudui.user.User;
+import dap.vaadin.crudui.user.UserRepository;
+import dap.vaadin.crudui.product.Product;
+import dap.vaadin.crudui.product.ProductRepository;
 import dap.vaadin.crudui.crud.Crud;
 import dap.vaadin.crudui.crud.CrudListener;
 import dap.vaadin.crudui.crud.CrudOperation;
@@ -14,6 +18,8 @@ import dap.vaadin.crudui.form.impl.field.provider.CheckBoxGroupProvider;
 import dap.vaadin.crudui.form.impl.field.provider.ComboBoxProvider;
 import dap.vaadin.crudui.form.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
+import dap.vaadin.crudui.team.Team;
+import dap.vaadin.crudui.team.TeamRepository;
 import org.apache.bval.util.StringUtils;
 
 import java.sql.Date;
@@ -22,14 +28,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Theme("mytheme")
-public class LicenceView extends VerticalLayout implements View, CrudListener<User> {
+public class UserView extends VerticalLayout implements View, CrudListener<User> {
 
 
     private TabSheet tabSheet = new TabSheet();
 
 
 
-    public LicenceView() {
+    public UserView() {
         tabSheet.setSizeFull();
 
         addCrud(getConfiguredCrud(), "Configured");
@@ -87,7 +93,7 @@ public class LicenceView extends VerticalLayout implements View, CrudListener<Us
 
         formFactory.setFieldProvider("products", new CheckBoxGroupProvider<>("Produit", ProductRepository.findAll(), Product::getName));
         formFactory.setFieldProvider("mainProduct", new ComboBoxProvider<>("Produit Principal", ProductRepository.findAll(), Product::getName));
-        formFactory.setFieldProvider("teamid", new ComboBoxProvider<>("Team", TeamRepository.findAll(), Team::getNomteam));
+        formFactory.setFieldProvider("teamid", new ComboBoxProvider<>("team", TeamRepository.findAll(), Team::getNomteam));
 
         formFactory.setButtonCaption(CrudOperation.ADD, "Add new user");
         crud.setRowCountCaption("%d user(s) found");

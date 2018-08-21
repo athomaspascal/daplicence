@@ -3,23 +3,16 @@ package dap.vaadin.crudui.app;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
-import com.vaadin.ui.renderers.DateRenderer;
-import com.vaadin.ui.renderers.TextRenderer;
 import dap.vaadin.crudui.crud.Crud;
 import dap.vaadin.crudui.crud.CrudListener;
 import dap.vaadin.crudui.crud.CrudOperation;
-import dap.vaadin.crudui.crud.impl.EditableGridCrud;
 import dap.vaadin.crudui.crud.impl.GridCrud;
-import dap.vaadin.crudui.form.impl.field.provider.CheckBoxGroupProvider;
-import dap.vaadin.crudui.form.impl.field.provider.ComboBoxProvider;
 import dap.vaadin.crudui.form.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
-import org.apache.bval.util.StringUtils;
+import dap.vaadin.crudui.team.Team;
+import dap.vaadin.crudui.team.TeamRepository;
 
-import java.sql.Date;
 import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Theme("mytheme")
 public class TeamView extends VerticalLayout implements View, CrudListener<Team> {
@@ -71,8 +64,8 @@ public class TeamView extends VerticalLayout implements View, CrudListener<Team>
         crud.getGrid().setColumns("id","nomteam");
         
         
-        formFactory.setButtonCaption(CrudOperation.ADD, "Add new Team");
-        crud.setRowCountCaption("%d Team(s) found");
+        formFactory.setButtonCaption(CrudOperation.ADD, "Add new team");
+        crud.setRowCountCaption("%d team(s) found");
 
         crud.setClickRowToUpdate(true);
         crud.setUpdateOperationVisible(false);

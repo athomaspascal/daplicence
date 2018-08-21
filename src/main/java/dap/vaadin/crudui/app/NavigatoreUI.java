@@ -24,10 +24,11 @@ public class NavigatoreUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         navigator = new Navigator( this,this);
-        navigator.addView("Licence", LicenceView.class);
+        navigator.addView("Licence", UserView.class);
         navigator.addView("Team", TeamView.class);
+        navigator.addView("Product", ProductView.class);
+        navigator.addView("Main", MainView.class);
 
-
-        navigator.navigateTo("Team");
+        navigator.navigateTo("Main");
     }
 }

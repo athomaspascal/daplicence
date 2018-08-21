@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.app;
+package dap.vaadin.crudui.team;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

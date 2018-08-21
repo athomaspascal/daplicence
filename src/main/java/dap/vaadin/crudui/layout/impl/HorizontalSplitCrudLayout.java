@@ -22,7 +22,7 @@ public class HorizontalSplitCrudLayout extends AbstractTwoComponentsCrudLayout {
         mainLayout.setSizeFull();
         mainLayout.setFirstComponent(firstComponent);
         mainLayout.setSecondComponent(secondComponent);
-        mainLayout.setSplitPosition(60, Sizeable.Unit.PERCENTAGE);
+        mainLayout.setSplitPosition(60, Unit.PERCENTAGE);
         return mainLayout;
     }
 

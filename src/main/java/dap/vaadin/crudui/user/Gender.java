@@ -1,7 +1,7 @@
-package dap.vaadin.crudui.app;
+package dap.vaadin.crudui.user;
 
 /**
- * @author  
+ * @author
  */
 public enum Gender {
 
