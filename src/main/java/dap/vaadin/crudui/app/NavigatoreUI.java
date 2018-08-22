@@ -28,6 +28,9 @@ public class NavigatoreUI extends UI {
         navigator.addView("Team", TeamView.class);
         navigator.addView("Product", ProductView.class);
         navigator.addView("Main", MainView.class);
+        /*
+        navigator.addView("User", UserView.class);
+        */
 
         navigator.navigateTo("Main");
     }
