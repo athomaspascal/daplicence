@@ -1,9 +1,10 @@
-package dap.vaadin.crudui.user;
+package dap.vaadin.crudui.entities.user;
 
 import dap.vaadin.crudui.app.JPAService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,7 +19,12 @@ public class UserRepository {
     }
 
     public static User save(User user) {
-        return JPAService.runInTransaction(em -> em.merge(user));
+
+        if (user.getDateCreation() == null)
+            user.setDateCreation(new Date());
+        return JPAService.runInTransaction(em -> em.merge(user)
+
+        );
     }
 
     public static void delete(User user) {

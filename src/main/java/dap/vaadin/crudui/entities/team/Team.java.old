@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.team;
+package dap.vaadin.crudui.entities.team;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,18 @@ import java.util.Objects;
 public class Team {
     private String nomteam;
     private int id;
+
+    @javax.persistence.Basic
+    @javax.persistence.Column(name = "NAME_DIVISION", nullable = false, length = 50)
+    public String getNameDivision() {
+        return nameDivision;
+    }
+
+    public void setNameDivision(String nameDivision) {
+        this.nameDivision = nameDivision;
+    }
+
+    private String nameDivision;
 
 
     @javax.persistence.Basic

@@ -1,7 +1,7 @@
-package dap.vaadin.crudui.user;
+package dap.vaadin.crudui.entities.user;
 
-import dap.vaadin.crudui.product.Product;
-import dap.vaadin.crudui.team.Team;
+import dap.vaadin.crudui.entities.product.Product;
+import dap.vaadin.crudui.entities.team.Team;
 import org.apache.bval.constraints.Email;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

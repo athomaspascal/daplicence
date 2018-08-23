@@ -1,9 +1,9 @@
 package dap.vaadin.crudui.app;
 
-import dap.vaadin.crudui.user.User;
-import dap.vaadin.crudui.user.UserRepository;
-import dap.vaadin.crudui.product.Product;
-import dap.vaadin.crudui.product.ProductRepository;
+import dap.vaadin.crudui.entities.user.User;
+import dap.vaadin.crudui.entities.user.UserRepository;
+import dap.vaadin.crudui.entities.product.Product;
+import dap.vaadin.crudui.entities.product.ProductRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

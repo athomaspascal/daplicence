@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.team;
+package dap.vaadin.crudui.entities.team;
 
 import dap.vaadin.crudui.app.JPAService;
 

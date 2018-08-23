@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.product;
+package dap.vaadin.crudui.entities.product;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * @author  .
  */
 @Entity
-@Table(name = "product_")
+@Table(name = "product")
 public class Product {
 
     @Id

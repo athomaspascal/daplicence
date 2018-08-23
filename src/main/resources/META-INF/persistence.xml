@@ -3,7 +3,9 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="test-pu">
-        <class>dap.vaadin.crudui.team.Team</class>
+        <class>dap.vaadin.crudui.entities.team.Team</class>
+        <class>dap.vaadin.crudui.entities.enterprise.Division</class>
+        <class>dap.vaadin.crudui.entities.enterprise.Division</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/h2"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>

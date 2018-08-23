@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.user;
+package dap.vaadin.crudui.entities.user;
 
 /**
  * @author
