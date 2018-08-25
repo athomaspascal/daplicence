@@ -15,9 +15,9 @@ import dap.vaadin.crudui.entities.team.Team;
 import dap.vaadin.crudui.entities.team.TeamRepository;
 import dap.vaadin.crudui.entities.user.User;
 import dap.vaadin.crudui.entities.user.UserRepository;
-import dap.vaadin.crudui.form.impl.field.provider.CheckBoxGroupProvider;
-import dap.vaadin.crudui.form.impl.field.provider.ComboBoxProvider;
-import dap.vaadin.crudui.form.impl.form.factory.GridLayoutCrudFormFactory;
+import dap.vaadin.crudui.crudform.impl.field.provider.CheckBoxGroupProvider;
+import dap.vaadin.crudui.crudform.impl.field.provider.ComboBoxProvider;
+import dap.vaadin.crudui.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
 
 import javax.persistence.EntityManager;

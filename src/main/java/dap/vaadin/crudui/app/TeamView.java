@@ -13,8 +13,8 @@ import dap.vaadin.crudui.entities.enterprise.Division;
 import dap.vaadin.crudui.entities.enterprise.DivisionRepository;
 import dap.vaadin.crudui.entities.team.Team;
 import dap.vaadin.crudui.entities.team.TeamRepository;
-import dap.vaadin.crudui.form.impl.field.provider.ComboBoxProvider;
-import dap.vaadin.crudui.form.impl.form.factory.GridLayoutCrudFormFactory;
+import dap.vaadin.crudui.crudform.impl.field.provider.ComboBoxProvider;
+import dap.vaadin.crudui.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
 
 import java.util.Collection;

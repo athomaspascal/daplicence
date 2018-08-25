@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.form;
+package dap.vaadin.crudui.crudform;
 
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
@@ -12,7 +12,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import dap.vaadin.crudui.crud.CrudOperation;
 import dap.vaadin.crudui.crud.CrudOperationException;
-import dap.vaadin.crudui.form.impl.field.provider.DefaultFieldProvider;
+import dap.vaadin.crudui.crudform.impl.field.provider.DefaultFieldProvider;
 import dap.vaadin.data.converter.StringToByteConverter;
 import dap.vaadin.data.converter.StringToCharacterConverter;
 

@@ -10,8 +10,8 @@ import dap.vaadin.crudui.crud.AbstractCrud;
 import dap.vaadin.crudui.crud.CrudListener;
 import dap.vaadin.crudui.crud.CrudOperation;
 import dap.vaadin.crudui.crud.CrudOperationException;
-import dap.vaadin.crudui.form.CrudFormFactory;
-import dap.vaadin.crudui.form.impl.form.factory.VerticalCrudFormFactory;
+import dap.vaadin.crudui.crudform.CrudFormFactory;
+import dap.vaadin.crudui.crudform.impl.form.factory.VerticalCrudFormFactory;
 import dap.vaadin.crudui.layout.CrudLayout;
 import dap.vaadin.crudui.layout.impl.WindowBasedCrudLayout;
 

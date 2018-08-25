@@ -1,7 +1,7 @@
 package dap.vaadin.crudui.crud;
 
 import com.vaadin.ui.Component;
-import dap.vaadin.crudui.form.CrudFormFactory;
+import dap.vaadin.crudui.crudform.CrudFormFactory;
 import dap.vaadin.crudui.layout.CrudLayout;
 
 /**

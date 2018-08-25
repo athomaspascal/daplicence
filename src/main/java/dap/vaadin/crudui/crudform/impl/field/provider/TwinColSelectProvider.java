@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.form.impl.field.provider;
+package dap.vaadin.crudui.crudform.impl.field.provider;
 
 import com.vaadin.ui.ItemCaptionGenerator;
 import com.vaadin.ui.TwinColSelect;

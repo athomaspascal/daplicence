@@ -1,4 +1,4 @@
-package dap.vaadin.crudui.form;
+package dap.vaadin.crudui.crudform;
 
 import com.vaadin.data.HasValue;
 import com.vaadin.ui.Button;

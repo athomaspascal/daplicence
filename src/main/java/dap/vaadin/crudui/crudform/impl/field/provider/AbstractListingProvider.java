@@ -1,9 +1,9 @@
-package dap.vaadin.crudui.form.impl.field.provider;
+package dap.vaadin.crudui.crudform.impl.field.provider;
 
 import com.vaadin.data.HasValue;
 import com.vaadin.ui.AbstractListing;
 import com.vaadin.ui.ItemCaptionGenerator;
-import dap.vaadin.crudui.form.FieldProvider;
+import dap.vaadin.crudui.crudform.FieldProvider;
 
 import java.util.Collection;
 
