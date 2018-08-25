@@ -29,9 +29,7 @@ public class TeamView extends VerticalLayout implements View, CrudListener<Team>
 
     public TeamView() {
         tabSheet.setSizeFull();
-
-        addCrud(getConfiguredCrud(), "Configured");
-
+        addCrud(getConfiguredCrud(), "All Teams");
         addComponent(tabSheet);
 
 
@@ -60,13 +58,13 @@ public class TeamView extends VerticalLayout implements View, CrudListener<Team>
 
         //formFactory.setErrorListener(e -> Notification.show("Custom error message (simulated error)", Notification.Type.ERROR_MESSAGE));
 
-        formFactory.setVisibleProperties(CrudOperation.ADD, "nomteam","userDivision");
-        formFactory.setVisibleProperties(CrudOperation.UPDATE, "nomteam","userDivision");
-        formFactory.setVisibleProperties(CrudOperation.DELETE, "nomteam","userDivision");
+        formFactory.setVisibleProperties(CrudOperation.ADD, "nomteam","userDivision","teamBossName","teamBossEmail");
+        formFactory.setVisibleProperties(CrudOperation.UPDATE, "nomteam","userDivision","teamBossName","teamBossEmail");
+        formFactory.setVisibleProperties(CrudOperation.DELETE, "nomteam","userDivision","teamBossName","teamBossEmail");
 
         formFactory.setDisabledProperties("id");
 
-        crud.getGrid().setColumns("id","nomteam","userDivision");
+        crud.getGrid().setColumns("nomteam","userDivision","teamBossName","teamBossEmail");
         crud.getGrid().getColumn("userDivision").setRenderer(userDivision -> userDivision == null ? "" : ((Division) userDivision).getNameDivision(), new TextRenderer());
         formFactory.setFieldProvider("userDivision", new ComboBoxProvider<>("Enterprise Division", DivisionRepository.findAll(), Division::getNameDivision));
         formFactory.setButtonCaption(CrudOperation.ADD, "Add new team");

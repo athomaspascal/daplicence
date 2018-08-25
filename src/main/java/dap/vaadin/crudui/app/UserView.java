@@ -5,10 +5,10 @@ import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 import com.vaadin.ui.renderers.DateRenderer;
 import com.vaadin.ui.renderers.TextRenderer;
-import dap.vaadin.crudui.crud.Crud;
-import dap.vaadin.crudui.crud.CrudListener;
+import dap.vaadin.crudui.crud.CrudListenerWithFilter;
 import dap.vaadin.crudui.crud.CrudOperation;
-import dap.vaadin.crudui.crud.impl.GridCrud;
+import dap.vaadin.crudui.crud.CrudWithFilter;
+import dap.vaadin.crudui.crud.impl.GridCrudWithFilter;
 import dap.vaadin.crudui.entities.product.Product;
 import dap.vaadin.crudui.entities.product.ProductRepository;
 import dap.vaadin.crudui.entities.team.Team;
@@ -20,11 +20,13 @@ import dap.vaadin.crudui.form.impl.field.provider.ComboBoxProvider;
 import dap.vaadin.crudui.form.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
 
+import javax.persistence.EntityManager;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 @Theme("mytheme")
-public class UserView extends VerticalLayout implements View, CrudListener<User> {
+public class UserView extends VerticalLayout implements View, CrudListenerWithFilter<User> {
 
 
     private TabSheet tabSheet = new TabSheet();
@@ -32,16 +34,22 @@ public class UserView extends VerticalLayout implements View, CrudListener<User>
 
 
     public UserView() {
+        Label titre = new Label("Users");
+        titre.setStyleName("titre");
         tabSheet.setSizeFull();
-
-        addCrud(getConfiguredCrud(), "Configured");
-
-        addComponent(tabSheet);
-
-
+        if (JPAService.getFactory() == null) JPAService.init();
+        EntityManager entityManager = JPAService.getFactory().createEntityManager();
+        List<String> strings = TeamRepository.listAllTeam(entityManager);
+        addCrud(getCrud(""), "All users");
+        for (String nomTeam:strings)
+        {
+              addCrud(getCrud(nomTeam), nomTeam);
+        };
+        addComponents(titre,tabSheet);
     }
 
-    private void addCrud(Crud crud, String caption) {
+    private void addCrud(CrudWithFilter crud, String caption) {
+
         VerticalLayout layout = new VerticalLayout(crud);
         layout.setSizeFull();
         layout.setMargin(true);
@@ -49,8 +57,10 @@ public class UserView extends VerticalLayout implements View, CrudListener<User>
     }
 
 
-    private Crud getConfiguredCrud() {
-        GridCrud<User> crud = new GridCrud<>(User.class, new HorizontalSplitCrudLayout());
+    private CrudWithFilter<User> getCrud(String filtre) {
+
+        GridCrudWithFilter<User> crud = new GridCrudWithFilter<>(User.class, new HorizontalSplitCrudLayout());
+        crud.setFilter(filtre);
         crud.setCrudListener(this);
 
         GridLayoutCrudFormFactory<User> formFactory = new GridLayoutCrudFormFactory<>(User.class, 2, 2);
@@ -111,8 +121,8 @@ public class UserView extends VerticalLayout implements View, CrudListener<User>
     }
 
     @Override
-    public Collection<User> findAll() {
-        return UserRepository.findAll();
+    public Collection<User> findAll(String filtre) {
+        return UserRepository.findAll(filtre);
     }
 
 }

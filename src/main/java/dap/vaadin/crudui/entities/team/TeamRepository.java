@@ -35,5 +35,10 @@ public class TeamRepository {
         return (Team) query.getResultList().stream().findFirst().orElse(null);
     }
 
+    public static List<String> listAllTeam( EntityManager em) {
+        Query query = em.createQuery("select distinct nomteam from Team u");
+        List<String> listeDesTeam = query.getResultList();
+        return listeDesTeam;
+    }
 
 }

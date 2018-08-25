@@ -14779,3 +14779,11 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .v-label-titre {
+	background: black;
+	color: white;
+	font-size: 24pt;
+	line-height: 24pt;
+	padding: 5px;
+}

@@ -12,10 +12,23 @@ import java.util.List;
  */
 public class UserRepository {
 
-    public static List<User> findAll() {
-        return JPAService.runInTransaction(em ->
+    public static List<User> findAll(String filter) {
+        System.out.println("Filtre:"+ filter);
+        if (filter.equalsIgnoreCase(""))
+            return JPAService.runInTransaction(em ->
                 em.createQuery("select u from User u").getResultList()
-        );
+            );
+        else {
+            String requete =" select  u " +
+                    " from User u " +
+                    " where teamid in (select t.id " +
+                    " from Team t" +
+                    " where t.nomteam = '" + filter + "')";
+            return JPAService.runInTransaction(em ->
+                em.createQuery(requete).getResultList());
+
+        }
+
     }
 
     public static User save(User user) {

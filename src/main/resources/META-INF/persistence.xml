@@ -5,12 +5,13 @@
     <persistence-unit name="test-pu">
         <class>dap.vaadin.crudui.entities.team.Team</class>
         <class>dap.vaadin.crudui.entities.enterprise.Division</class>
-        <class>dap.vaadin.crudui.entities.enterprise.Division</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/h2"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <!--
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            -->
             <property name="toplink.jdbc.url" value="jdbc:h2:~/h2"/>
             <property name="toplink.jdbc.driver" value="org.h2.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:h2:~/h2"/>
