@@ -16,18 +16,31 @@
 	<properties>
 		<vaadin.version>8.1.7</vaadin.version>
 		<vaadin.plugin.version>8.1.7</vaadin.plugin.version>
-		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
+		<jetty.plugin.version>9.4.12.RC2</jetty.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- If there are no local customizations, this can also be "fetch" or "cdn" -->
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
+
+		<jetty.http.port>9999</jetty.http.port>
+
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>vaadin-addons</id>
 			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<repository>
+			<id>elasticsearch-releases</id>
+			<url>https://artifacts.elastic.co/maven</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -50,6 +63,18 @@
             <version>1.4.196</version>
 
         </dependency>
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>transport</artifactId>
+			<version>6.2.3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>x-pack-transport</artifactId>
+			<version>6.2.3</version>
+		</dependency>
 
         <dependency>
 			<groupId>org.hibernate</groupId>
@@ -62,6 +87,23 @@
 			<artifactId>javax.el</artifactId>
 			<version>3.0.1-b08</version>
 
+		</dependency>
+
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>x-pack-transport</artifactId>
+			<version>6.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.1</version>
 		</dependency>
 
 		<dependency>
@@ -185,6 +227,7 @@
 				<configuration>
 					<scanIntervalSeconds>2</scanIntervalSeconds>
                     <reload>manual</reload>
+
                 </configuration>
 			</plugin>
 		</plugins>

@@ -1,0 +1,6 @@
+1;timestamp;date;from;0;now;-2;dd/MM/yyyy HH:mm:ss
+2;metric_name;string;random;0;cpu_user cpu_idle cpu_system;
+4;metric_value;int;random;0;50;100;
+5;domaine;string;random;0;SAS ENTREPOT BIG-DATA;;
+6;sous_domaine;string;random;0;Performance;;
+

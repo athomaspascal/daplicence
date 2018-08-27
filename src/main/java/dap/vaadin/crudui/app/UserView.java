@@ -9,21 +9,25 @@ import dap.vaadin.crudui.crud.CrudListenerWithFilter;
 import dap.vaadin.crudui.crud.CrudOperation;
 import dap.vaadin.crudui.crud.CrudWithFilter;
 import dap.vaadin.crudui.crud.impl.GridCrudWithFilter;
+import dap.vaadin.crudui.crudform.impl.field.provider.CheckBoxGroupProvider;
+import dap.vaadin.crudui.crudform.impl.field.provider.ComboBoxProvider;
+import dap.vaadin.crudui.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.entities.product.Product;
 import dap.vaadin.crudui.entities.product.ProductRepository;
 import dap.vaadin.crudui.entities.team.Team;
 import dap.vaadin.crudui.entities.team.TeamRepository;
 import dap.vaadin.crudui.entities.user.User;
 import dap.vaadin.crudui.entities.user.UserRepository;
-import dap.vaadin.crudui.crudform.impl.field.provider.CheckBoxGroupProvider;
-import dap.vaadin.crudui.crudform.impl.field.provider.ComboBoxProvider;
-import dap.vaadin.crudui.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import dap.vaadin.crudui.layout.impl.HorizontalSplitCrudLayout;
+import elastic.ElasticClient;
 
 import javax.persistence.EntityManager;
+import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.Properties;
 
 @Theme("mytheme")
 public class UserView extends VerticalLayout implements View, CrudListenerWithFilter<User> {
@@ -102,6 +106,21 @@ public class UserView extends VerticalLayout implements View, CrudListenerWithFi
     @Override
     public User add(User user) {
         UserRepository.save(user);
+        SimpleDateFormat format = null;
+        Properties p =        new Properties();
+        try {
+            p.load(Thread.currentThread().
+                            getContextClassLoader().
+                            getResourceAsStream("general.properties"));
+            format = new SimpleDateFormat(p.getProperty("date-format"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String timestamp = format.format(user.getDateCreation());
+        String document = "\"timestamp\":"+ "\"" + timestamp + p.getProperty("Timezone") + "\"";
+        ElasticClient.connectAndIndex(document);
         return user;
     }
 
