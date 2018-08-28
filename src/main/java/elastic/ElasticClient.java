@@ -40,13 +40,18 @@ public class ElasticClient {
     }
 
 
-    public void connectElastic(String newIndexName, String newIndexType) {
+    public void connectElastic(String newIndexName, String newIndexType) throws IOException {
+        if (System.getProperty("configElastic") != null)
+            configElastic = System.getProperty("configElastic");
+        elasticProperties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(configElastic));
+
         this.indexName = newIndexName;
         this.indexType = newIndexType;
         connectElastic();
     }
 
     public void connectElastic() {
+
         logger.info("Connecting Properties: Cluster-name=" + elasticProperties.getProperty("cluster-name"));
 
         Settings settings = Settings.builder()

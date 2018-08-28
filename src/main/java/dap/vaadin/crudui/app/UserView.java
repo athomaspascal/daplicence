@@ -2,6 +2,7 @@ package dap.vaadin.crudui.app;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
+import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.renderers.DateRenderer;
 import com.vaadin.ui.renderers.TextRenderer;
@@ -83,6 +84,8 @@ public class UserView extends VerticalLayout implements View, CrudListenerWithFi
         crud.getGrid().setColumns("nom", "dateCreation", "email", "matricule", "teamid", "mainProduct", "active");
         crud.getGrid().getColumn("mainProduct").setRenderer(product -> product == null ? "" : ((Product) product).getName(), new TextRenderer());
         crud.getGrid().getColumn("teamid").setRenderer(group -> group == null ? "" : ((Team) group).getNomteam(), new TextRenderer());
+        crud.getGrid().setHeightMode(HeightMode.UNDEFINED);
+
         ((Grid.Column<User, Date>) crud.getGrid().getColumn("dateCreation")).setRenderer(new DateRenderer("%1$tY-%1$tm-%1$te"));
 
         formFactory.setFieldType("password", PasswordField.class);
