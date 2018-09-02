@@ -1,5 +1,6 @@
 package dap.vaadin.crudui.entities.user;
 
+import dap.vaadin.crudui.entities.enterprise.Environnement;
 import dap.vaadin.crudui.entities.product.Product;
 import dap.vaadin.crudui.entities.team.Team;
 import org.apache.bval.constraints.Email;
@@ -50,6 +51,19 @@ public class User {
     @ManyToMany
     @Fetch(FetchMode.JOIN)
     private Set<Product> products = new HashSet<>();
+
+    public Set<Environnement> getEnvironnements() {
+        return environnements;
+    }
+
+    public void setEnvironnements(Set<Environnement> environnements) {
+        this.environnements = environnements;
+    }
+
+    @ManyToMany
+    @Fetch(FetchMode.JOIN)
+    private Set<Environnement> environnements = new HashSet<>();
+
 
     public Team getTeamid() {
         return teamid;

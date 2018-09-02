@@ -28,7 +28,7 @@ public class TeamRepository {
         });
     }
 
-    private static Team getById(Long id, EntityManager em) {
+    public static Team getById(Long id, EntityManager em) {
         Query query = em.createQuery("select u from Team u where u.id=:id");
         query.setParameter("id", id);
 

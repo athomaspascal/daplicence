@@ -13,6 +13,8 @@ import dap.vaadin.crudui.crud.impl.GridCrudWithFilter;
 import dap.vaadin.crudui.crudform.impl.field.provider.CheckBoxGroupProvider;
 import dap.vaadin.crudui.crudform.impl.field.provider.ComboBoxProvider;
 import dap.vaadin.crudui.crudform.impl.form.factory.GridLayoutCrudFormFactory;
+import dap.vaadin.crudui.entities.enterprise.Environnement;
+import dap.vaadin.crudui.entities.enterprise.EnvironnementRepository;
 import dap.vaadin.crudui.entities.product.Product;
 import dap.vaadin.crudui.entities.product.ProductRepository;
 import dap.vaadin.crudui.entities.team.Team;
@@ -75,8 +77,8 @@ public class UserView extends VerticalLayout implements View, CrudListenerWithFi
 
         //formFactory.setErrorListener(e -> Notification.show("Custom error message (simulated error)", Notification.Type.ERROR_MESSAGE));
 
-        formFactory.setVisibleProperties(CrudOperation.ADD, "nom", "dateCreation", "email", "matricule","teamid", "products", "password", "mainProduct", "active");
-        formFactory.setVisibleProperties(CrudOperation.UPDATE, "id", "nom", "dateCreation", "gender","email", "matricule", "teamid","password", "products", "active", "mainProduct");
+        formFactory.setVisibleProperties(CrudOperation.ADD, "nom", "dateCreation", "email", "matricule","teamid", "products","environnements", "password", "mainProduct", "active");
+        formFactory.setVisibleProperties(CrudOperation.UPDATE, "id", "nom", "dateCreation", "gender","email", "matricule", "teamid","password", "products","environnements", "active", "mainProduct");
         formFactory.setVisibleProperties(CrudOperation.DELETE, "nom", "email", "matricule");
 
         formFactory.setDisabledProperties("id");
@@ -91,7 +93,10 @@ public class UserView extends VerticalLayout implements View, CrudListenerWithFi
         formFactory.setFieldType("password", PasswordField.class);
         formFactory.setFieldCreationListener("dateCreation", field -> ((DateField) field).setDateFormat("yyyy-MM-dd"));
 
-        formFactory.setFieldProvider("products", new CheckBoxGroupProvider<>("Produit", ProductRepository.findAll(), Product::getName));
+        formFactory.setFieldProvider("products",
+                new CheckBoxGroupProvider<>("Produit", ProductRepository.findAll(), Product::getName));
+        formFactory.setFieldProvider("environnements",
+                new CheckBoxGroupProvider<>("Environnement", EnvironnementRepository.findAll(), Environnement::getEnvironnementName));
         formFactory.setFieldProvider("mainProduct", new ComboBoxProvider<>("Produit Principal", ProductRepository.findAll(), Product::getName));
 
         formFactory.setFieldProvider("teamid", new ComboBoxProvider<>("team", TeamRepository.findAll(), Team::getNomteam));
