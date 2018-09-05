@@ -1,7 +1,6 @@
 package dap.vaadin.load;
 
 import dap.vaadin.crudui.app.JPAService;
-import dap.vaadin.crudui.entities.product.Product;
 import dap.vaadin.crudui.entities.user.User;
 import dap.vaadin.crudui.entities.user.UserRepository;
 import elastic.ElasticClient;
@@ -21,7 +20,7 @@ public class LoadUsers {
     public static void main(String[] args) throws IOException {
         LoadUsers loadUsers = new LoadUsers();
         loadUsers.init();
-        List<User> all = UserRepository.findAll("");
+        List<User> all = UserRepository.findAllOderById("");
 
 
         BufferedReader br = null;
@@ -32,19 +31,29 @@ public class LoadUsers {
             e.printStackTrace();
         }
 
+        int n = 0;
+        ElasticClient el1 = new ElasticClient();
+        el1.connectElastic();
+        Properties general = new Properties();
+        String fic = "general.properties";
+        general.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(fic));
 
         for(User user : all){
-            System.out.println(user.getDateCreation().toString() + ":" +
+            n = n + 1;
+            //if (user.getMainProduct() != null)
+            //if (!user.getMainProduct().getName().equalsIgnoreCase("SAS BASE"))
+            String nomProduit = user.getMainProduct().getName();
+            System.out.println(user.getId()+":"+ user.getDateCreation().toString() + ":" +
                     user.getTeamid().getNomteam() + ":" +
                     user.getTeamid().getUserDivision().getNameDivision() + ":" +
-                    user.getNom());
-            Set<Product> products = user.getProducts();
+                    user.getNom() + ":" + nomProduit);
+
+
+            //Set<Product> products = user.getProducts();
             try {
-                ElasticClient el1 = new ElasticClient();
-                Properties general = new Properties();
-                String fic = "general.properties";
-                general.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(fic));
-                el1.connectElastic();
+                el1.client.prepareDelete(general.getProperty("indexName"), general.getProperty("indexType"),
+                        user.getId().toString()).get();
+                if (n<123)
                 el1.client.prepareIndex(
                         general.getProperty("indexName"),
                         general.getProperty("indexType"),user.getId().toString())
@@ -53,10 +62,11 @@ public class LoadUsers {
                                 .field("name",user.getNom())
                                 .field("team", user.getTeamid().getNomteam())
                                 .field("division",user.getTeamid().getUserDivision().getNameDivision())
-                                .field("")
+                                .field("product_name",nomProduit)
                                 .field("timestamp",user.getDateCreation())
                                 .endObject())
                         .get();
+
             }
             catch(Exception e)
             {
