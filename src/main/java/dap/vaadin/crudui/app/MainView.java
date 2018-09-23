@@ -5,10 +5,16 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
 
 public class MainView extends HorizontalLayout implements View {
+    static Logger logger = LogManager.getLogger("elastic-generator");
+    String pathImage = "VAADIN/themes/mytheme/images/";
 
     public MainView()
     {
@@ -16,36 +22,46 @@ public class MainView extends HorizontalLayout implements View {
         titre.setStyleName("titre");
         String width = "100";
         String height = "100";
+        String imageStyle = "my-img-button";
 
-        Image imageTeam = setImage("VAADIN/themes/mytheme/images/Team.jpg","my-img-button",width,height,"Team");
-        Image imageProduct = setImage("VAADIN/themes/mytheme/images/Software.png","my-img-button",width,height,"Product");
-        Image imageContacts = setImage("VAADIN/themes/mytheme/images/Contacts.png","my-img-button",width,height,"Contacts");
-
-        Image image = setImage("VAADIN/themes/mytheme/images/Users.jpg","my-img-button",width,height,"Licence");
+        Image imageTeam = setImage(pathImage+ "Team.jpg",imageStyle,width,height,"Team");
+        Image imageProduct = setImage(pathImage+ "Software.png",imageStyle,width,height,"Product");
+        Image imageContacts = setImage(pathImage+ "Contacts.png",imageStyle,width,height,"Contacts");
+        Image image = setImage(pathImage+ "Users.jpg",imageStyle,width,height,"Licence");
+        Image imageFormulaire = setImage(pathImage+ "formulaire.png",imageStyle,width,height,"Formulaire");
 
         HorizontalLayout h = new HorizontalLayout();
-        HorizontalLayout h2 = new HorizontalLayout(imageContacts);
+        HorizontalLayout h2 = new HorizontalLayout(imageContacts,imageFormulaire);
         h.addComponents(image,imageTeam,imageProduct);
         VerticalLayout v1 = new VerticalLayout();
         v1.addComponents(titre,h,h2);
         CssLayout v2 = new CssLayout();
-        v2.setWidth("900px");
+        Properties p = new Properties();
+        try {
+            p.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("dashboard.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        String URL="http://localhost:5601/goto/dd6ffa8f217efdfac0d48a4ebfa00cf0?embed=true";
-        BrowserFrame browser = setBrowser(URL,"300px","300px");
-        URL="http://localhost:5601/goto/a862502fdabb6e2cfa2bf98e28eca785?embed=true";
-        BrowserFrame browser2 = setBrowser(URL,"600px","300px");
-        URL="http://localhost:5601/goto/cf1c6745656931cc0cb7305ac1481215?embed=true";
-        BrowserFrame browser3 = setBrowser(URL,"200px","300px");
-        URL="http://localhost:5601/goto/57375cfe54d468556e4ed99f957a8f2f?embed=true";
-        BrowserFrame browser4 = setBrowser(URL,"500px","300px");
-        v2.addComponents(browser4,browser,browser3,browser2);
+
+        v2.setWidth(p.getProperty("width-window"));
+
+        for(int i = 1; i <= Integer.parseInt(p.getProperty("nb-dashboard")); i++)
+        {
+            String URL=p.getProperty("dashboard-" + i);
+            BrowserFrame browser = setBrowser(URL,p.getProperty("width-" + i),p.getProperty("heigth-" + i));
+            v2.addComponent(browser);
+        }
+
 
         addComponents(v1,v2);
     }
 
     public BrowserFrame setBrowser(String URL,String width,String heigth)
     {
+        logger.info("URL:" +URL);
+        logger.info("width:" +width);
+        logger.info("heigth:" +heigth);
         BrowserFrame browser2 = new BrowserFrame("",
                 new ExternalResource(URL));
         browser2.setWidth(width);

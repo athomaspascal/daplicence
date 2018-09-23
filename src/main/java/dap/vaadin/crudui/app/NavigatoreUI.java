@@ -29,6 +29,7 @@ public class NavigatoreUI extends UI {
         navigator.addView("Product", ProductView.class);
         navigator.addView("Main", MainView.class);
         navigator.addView("Contacts", ContactsView.class);
+        navigator.addView("Formulaire", FormulaireChoice.class);
         navigator.navigateTo("Main");
     }
 }
