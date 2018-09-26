@@ -2,11 +2,10 @@ package dap.vaadin.crudui.app;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.ListSelect;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import dap.vaadin.crudui.entities.formulaire.Formulaire;
+import dap.vaadin.crudui.entities.formulaire.FormulaireField;
+import dap.vaadin.crudui.entities.formulaire.FormulaireFieldRepository;
 import dap.vaadin.crudui.entities.formulaire.FormulaireRepository;
 
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
     public FormulaireChoice() {
         JPAService.init();
+        VerticalLayout layout = new VerticalLayout();
         List<Formulaire> listFormulaire = FormulaireRepository.findAll();
         List<String> data = new ArrayList<String>();
 
@@ -25,14 +25,37 @@ public class FormulaireChoice extends VerticalLayout implements View{
         });
 
         Label titre = new Label("Liste des formulaires");
-        ListSelect sample = new ListSelect<>("Select an option", data);
-        sample.setRows(listFormulaire.size());
-        sample.select(data.get(0));
+        ComboBox sample = new ComboBox<>("Select an option", data);
+
+
+        //sample.select(data.get(0));
         sample.setSizeUndefined();
-        sample.addValueChangeListener(event -> Notification.show("Value changed:", String.valueOf(event.getValue()),
-                Notification.Type.TRAY_NOTIFICATION));
+        sample.addSelectionListener(event -> {
 
-        addComponents(sample);
+            String formulaire = (String) event.getValue();
+            CssLayout formulaireLayout = buildFormulaire(formulaire);
+            layout.addComponent(formulaireLayout);
+            Button OK = new Button("Save");
+            Button Cancel = new Button("Cancel");
+            layout.addComponents(OK,Cancel);
+            OK.focus();
+        });
 
+        layout.addComponents(titre,sample);
+
+        addComponents(layout);
+
+    }
+
+    private CssLayout buildFormulaire(String formulaire) {
+        CssLayout monlayout= new CssLayout();
+        List <FormulaireField> listF = FormulaireFieldRepository.findAllByFormulaire(formulaire);
+        listF.forEach(formulaireField->{
+            if (formulaireField.getCodeParameter() == null || formulaireField.getCodeParameter().equalsIgnoreCase(""))
+                monlayout.addComponent(new TextField(formulaireField.getLibelleField()));
+        });
+
+
+        return monlayout;
     }
 }
