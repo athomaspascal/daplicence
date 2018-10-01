@@ -14,17 +14,14 @@
 	</prerequisites>
 
 	<properties>
-		<vaadin.version>8.1.7</vaadin.version>
-		<vaadin.plugin.version>8.1.7</vaadin.plugin.version>
-		<jetty.plugin.version>9.4.12.RC2</jetty.plugin.version>
+		<vaadin.version>8.5.2</vaadin.version>
+		<vaadin.plugin.version>8.5.2</vaadin.plugin.version>
+		<jetty.plugin.version>9.4.12.v20180830</jetty.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- If there are no local customizations, this can also be "fetch" or "cdn" -->
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
-
-		<jetty.http.port>9999</jetty.http.port>
-
 	</properties>
 
 	<repositories>
@@ -89,11 +86,6 @@
 
 		</dependency>
 
-		<dependency>
-			<groupId>org.elasticsearch.client</groupId>
-			<artifactId>x-pack-transport</artifactId>
-			<version>6.2.3</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -136,18 +128,14 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.0.5</version>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.apache.bval</groupId>
 			<artifactId>org.apache.bval.bundle</artifactId>
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.bval</groupId>
-			<artifactId>org.apache.bval.bundle</artifactId>
-			<version>1.1.2</version>
-			<scope>compile</scope>
-		</dependency>
+		-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -169,6 +157,7 @@
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
+			<version>LATEST</version>
 		</dependency>
 	</dependencies>
 
