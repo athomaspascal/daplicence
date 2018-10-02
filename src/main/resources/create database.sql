@@ -56,7 +56,7 @@ create unique index PRIMARY_KEY_D1
   on FORMULAIRE_PARAMETER (CODE_PARAMETER);
 
 alter table FORMULAIRE_PARAMETER
-  add primary key (CODE_PARAMETER);
+  add primary key (CODE);
 
 create table FORMULAIRE_CONFIG
 (

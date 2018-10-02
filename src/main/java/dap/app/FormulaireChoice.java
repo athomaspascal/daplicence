@@ -3,13 +3,11 @@ package dap.app;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
-import dap.entities.formulaire.Formulaire;
-import dap.entities.formulaire.FormulaireField;
-import dap.entities.formulaire.FormulaireFieldRepository;
-import dap.entities.formulaire.FormulaireRepository;
+import dap.entities.formulaire.*;
 import dap.entities.team.Team;
 import dap.entities.team.TeamRepository;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,24 +84,49 @@ public class FormulaireChoice extends VerticalLayout implements View{
         VerticalLayout monlayout= new VerticalLayout();
         List <FormulaireField> listF = FormulaireFieldRepository.findAllByFormulaire(formulaire);
         listF.forEach(formulaireField->{
-            if (formulaireField.getCodeParameter() == null || formulaireField.getCodeParameter().equalsIgnoreCase("")) {
+            String codeParameter = formulaireField.getCodeParameter();
+            if ( codeParameter == null || codeParameter.equalsIgnoreCase("")) {
                 if (formulaireField.getTypeField() == null || formulaireField.getTypeField().equalsIgnoreCase(""))
                 {
                     TextField textField = new TextField(formulaireField.getLibelleField());
                     textField.addStyleName("inline-label");
                     textField.addStyleName("formulaire");
+                    if (formulaireField.getLargeur() == null)
                     textField.setWidthUndefined();
+                    else
+                        textField.setWidth(formulaireField.getLargeur());
                     monlayout.addComponent(textField);
 
                 } else {
                     TextArea textArea = new TextArea(formulaireField.getLibelleField());
                     textArea.addStyleName("inline-label");
-                    textArea.setWidthUndefined();
+                    if (formulaireField.getLargeur() == null)
+                        textArea.setWidthUndefined();
+                    else
+                        textArea.setWidth(formulaireField.getLargeur());
+
                     monlayout.addComponent(textArea);
 
                 }
+            }
+            else {
+                JPAService jpa = new JPAService();
+                jpa.init();
+                EntityManager em = jpa.getFactory().createEntityManager();
 
+                FormulaireParameter fp = FormulaireParameterRepository.getById(codeParameter,em);
+                if (fp.getTypeRepresentation().equalsIgnoreCase("COMBOBOX"))
+                {
+                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
+                    ComboBox<String> comboBox = new ComboBox<>(fp.getLibelle());
+                    comboBox.addStyleName("inline-label");
 
+                    list.forEach(formulaireValue->{
+                        comboBox.setItems(formulaireValue.getLibelleValue());
+
+                    });
+                    monlayout.addComponent(comboBox);
+                }
             }
         });
 

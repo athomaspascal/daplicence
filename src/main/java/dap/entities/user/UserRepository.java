@@ -66,7 +66,7 @@ public class UserRepository {
         });
     }
 
-    private static User getById(Long id, EntityManager em) {
+    public static User getById(Long id, EntityManager em) {
         Query query = em.createQuery("select u from User u where u.id=:id");
         query.setParameter("id", id);
 

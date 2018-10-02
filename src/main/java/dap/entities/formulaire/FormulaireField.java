@@ -36,6 +36,16 @@ public class FormulaireField {
     @Column(name="TYPE_FIELD")
     String typeField;
 
+    public String getLargeur() {
+        return largeur;
+    }
+
+    public void setLargeur(String largeur) {
+        this.largeur = largeur;
+    }
+
+    @Column(name="LARGEUR")
+    String largeur;
 
     public int getId() {
         return id;
