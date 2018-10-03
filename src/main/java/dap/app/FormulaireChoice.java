@@ -16,9 +16,10 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
     public FormulaireChoice() {
         JPAService.init();
-        VerticalLayout layout = new VerticalLayout();
-        Label titre = new Label("Liste des formulaires");
+
+        Label titre = new Label("Formulaire");
         titre.setStyleName("titre");
+        addComponent(titre);
         List<Team> listTeam = TeamRepository.findAll();
         List<String> dataTeam = new ArrayList<String>();
         listTeam.forEach(team->{
@@ -26,16 +27,20 @@ public class FormulaireChoice extends VerticalLayout implements View{
         });
 
         HorizontalLayout h1 = new HorizontalLayout();
+        /*
         Label teamTitle = new Label("Liste des équipes");
         teamTitle.addStyleName("formulaire");
-        ComboBox teamComboBox = new ComboBox();
+        */
+        ComboBox teamComboBox = new ComboBox("Liste des équipes");
+        teamComboBox.addStyleName("inline-label");
         teamComboBox.setTextInputAllowed(false);
         teamComboBox.setItems( dataTeam);
         teamComboBox.setEmptySelectionAllowed(false);
 
-        h1.addComponents(teamTitle,teamComboBox);
-        Label formulaireTitle = new Label("Liste des équipes");
-        formulaireTitle.setStyleName("v-label-formulaire");
+        h1.addComponents(teamComboBox);
+        /* Label formulaireTitle = new Label("Liste des équipe");
+        formulaireTitle.setStyleName("inline-label");
+        */
 
         // LISTE DES FORMULAIRES
         List<Formulaire> listFormulaire = FormulaireRepository.findAll();
@@ -46,64 +51,55 @@ public class FormulaireChoice extends VerticalLayout implements View{
         });
 
 
-        ComboBox formulaireComboBox = new ComboBox();
+        ComboBox formulaireComboBox = new ComboBox("Liste des formulaires");
+        formulaireComboBox.setStyleName("inline-label");
         formulaireComboBox.setTextInputAllowed(false);
         formulaireComboBox.setItems( data);
         formulaireComboBox.setEmptySelectionAllowed(false);
 
         HorizontalLayout h2 = new HorizontalLayout();
-        h2.addComponents(formulaireTitle,formulaireComboBox);
+        h2.addComponents(formulaireComboBox);
 
-        layout.addComponents(titre,
-                h1,
-                h2);
+        addComponents(teamComboBox,formulaireComboBox);
+        Label liste = new Label("Liste des questions");
+        liste.setStyleName("question");
 
+        addComponent(liste);
         //sample.select(data.get(0));
         formulaireComboBox.setSizeUndefined();
         formulaireComboBox.addSelectionListener(event -> {
 
             String formulaire = (String) event.getValue();
-            VerticalLayout formulaireLayout = buildFormulaire(formulaire);
-            layout.addComponent(formulaireLayout);
-            HorizontalLayout h = new HorizontalLayout();
-
-            Button OK = new Button("Save");
-            Button Cancel = new Button("Cancel");
-            h.addComponents(OK,Cancel);
-            layout.addComponents(h);
-            OK.focus();
+            buildFormulaire(formulaire,this);
         });
 
 
-
-        addComponents(layout);
-
     }
 
-    private VerticalLayout buildFormulaire(String formulaire) {
-        VerticalLayout monlayout= new VerticalLayout();
-        List <FormulaireField> listF = FormulaireFieldRepository.findAllByFormulaire(formulaire);
-        listF.forEach(formulaireField->{
-            String codeParameter = formulaireField.getCodeParameter();
+    private void buildFormulaire(String formulaire, VerticalLayout monlayout) {
+        //VerticalLayout monlayout= new VerticalLayout();
+        List <FormulaireQuestion> listF = FormulaireQuestionRepository.findAllByFormulaire(formulaire);
+        listF.forEach(formulaireQuestion ->{
+            String codeParameter = formulaireQuestion.getCodeParameter();
             if ( codeParameter == null || codeParameter.equalsIgnoreCase("")) {
-                if (formulaireField.getTypeField() == null || formulaireField.getTypeField().equalsIgnoreCase(""))
+                if (formulaireQuestion.getTypeField() == null || formulaireQuestion.getTypeField().equalsIgnoreCase(""))
                 {
-                    TextField textField = new TextField(formulaireField.getLibelleField());
+                    TextField textField = new TextField(formulaireQuestion.getLibelleField());
                     textField.addStyleName("inline-label");
                     textField.addStyleName("formulaire");
-                    if (formulaireField.getLargeur() == null)
+                    if (formulaireQuestion.getLargeur() == null)
                     textField.setWidthUndefined();
                     else
-                        textField.setWidth(formulaireField.getLargeur());
+                        textField.setWidth(formulaireQuestion.getLargeur());
                     monlayout.addComponent(textField);
 
                 } else {
-                    TextArea textArea = new TextArea(formulaireField.getLibelleField());
+                    TextArea textArea = new TextArea(formulaireQuestion.getLibelleField());
                     textArea.addStyleName("inline-label");
-                    if (formulaireField.getLargeur() == null)
+                    if (formulaireQuestion.getLargeur() == null)
                         textArea.setWidthUndefined();
                     else
-                        textArea.setWidth(formulaireField.getLargeur());
+                        textArea.setWidth(formulaireQuestion.getLargeur());
 
                     monlayout.addComponent(textArea);
 
@@ -127,10 +123,34 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     });
                     monlayout.addComponent(comboBox);
                 }
+                if (fp.getTypeRepresentation().equalsIgnoreCase("RADIOBOUTON"))
+                {
+                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
+                    RadioButtonGroup radioBouton = new RadioButtonGroup<>(formulaireQuestion.getLibelleField(), list);
+                    radioBouton.addStyleName("inline-label");
+                    radioBouton.setItemCaptionGenerator(item -> ((FormulaireValue) item).getLibelleValue());
+                    monlayout.addComponent(radioBouton);
+
+                }
+                if (fp.getTypeRepresentation().equalsIgnoreCase("CHECKBOX"))
+                {
+                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
+                    CheckBoxGroup checkBoxGroup = new CheckBoxGroup<>(formulaireQuestion.getLibelleField(), list);
+                    checkBoxGroup.addStyleName("inline-label");
+                    checkBoxGroup.setItemCaptionGenerator(item -> ((FormulaireValue) item).getLibelleValue());
+                    monlayout.addComponent(checkBoxGroup);
+                }
+
             }
         });
 
+        HorizontalLayout h = new HorizontalLayout();
 
-        return monlayout;
+        Button OK = new Button("Save");
+        Button Cancel = new Button("Cancel");
+        h.addComponents(OK,Cancel);
+        monlayout.addComponents(h);
+        OK.focus();
+
     }
 }

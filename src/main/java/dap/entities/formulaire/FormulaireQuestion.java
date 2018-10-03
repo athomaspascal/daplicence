@@ -4,8 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "formulaire_field")
-public class FormulaireField {
+@Table(name = "FORMULAIRE_QUESTION")
+public class FormulaireQuestion {
     @NotNull
     @Id
     @GeneratedValue
