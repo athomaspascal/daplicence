@@ -66,6 +66,14 @@
 			<version>6.2.3</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.vaadin/vaadin-client-compiled -->
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiled</artifactId>
+			<version>8.5.2</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>

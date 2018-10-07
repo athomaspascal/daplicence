@@ -14,6 +14,16 @@ import java.util.List;
 @Theme("mytheme")
 public class FormulaireChoice extends VerticalLayout implements View{
 
+    List<TextField> listTextField = new ArrayList();
+    List<TextArea> listTextArea = new ArrayList();
+    List<ComboBox> listComboBox = new ArrayList();
+    List<RadioButtonGroup> listRadioButtonGroup = new ArrayList();
+    List<CheckBoxGroup> listCheckBoxGroup = new ArrayList();
+    Team teamSelected;
+    Formulaire formulaireSelected;
+    List<String> typeQuestion = new ArrayList<String>();
+    List<Integer> numQuestion = new ArrayList<Integer>();
+
     public FormulaireChoice() {
         JPAService.init();
 
@@ -21,57 +31,39 @@ public class FormulaireChoice extends VerticalLayout implements View{
         titre.setStyleName("titre");
         addComponent(titre);
         List<Team> listTeam = TeamRepository.findAll();
-        List<String> dataTeam = new ArrayList<String>();
-        listTeam.forEach(team->{
-            dataTeam.add(team.getNomteam());
-        });
-
-        HorizontalLayout h1 = new HorizontalLayout();
-        /*
-        Label teamTitle = new Label("Liste des équipes");
-        teamTitle.addStyleName("formulaire");
-        */
-        ComboBox teamComboBox = new ComboBox("Liste des équipes");
+        ComboBox<Team> teamComboBox = new ComboBox("Liste des équipes");
         teamComboBox.addStyleName("inline-label");
         teamComboBox.setTextInputAllowed(false);
-        teamComboBox.setItems( dataTeam);
+        teamComboBox.setItems(listTeam);
+        teamComboBox.setItemCaptionGenerator(Team::getNomteam);
         teamComboBox.setEmptySelectionAllowed(false);
-
-        h1.addComponents(teamComboBox);
-        /* Label formulaireTitle = new Label("Liste des équipe");
-        formulaireTitle.setStyleName("inline-label");
-        */
+        teamComboBox.addValueChangeListener(event -> {
+            teamSelected = teamComboBox.getValue();
+        });
 
         // LISTE DES FORMULAIRES
         List<Formulaire> listFormulaire = FormulaireRepository.findAll();
-        List<String> data = new ArrayList<String>();
-
-        listFormulaire.forEach(formulaire -> {
-            data.add(formulaire.getLibelleFormulaire());
-        });
-
-
-        ComboBox formulaireComboBox = new ComboBox("Liste des formulaires");
+        ComboBox<Formulaire> formulaireComboBox = new ComboBox("Liste des formulaires");
         formulaireComboBox.setStyleName("inline-label");
         formulaireComboBox.setTextInputAllowed(false);
-        formulaireComboBox.setItems( data);
+        formulaireComboBox.setItems(listFormulaire);
+        formulaireComboBox.setItemCaptionGenerator(Formulaire::getLibelleFormulaire);
         formulaireComboBox.setEmptySelectionAllowed(false);
+        VerticalLayout formulaire = new VerticalLayout();
+        formulaireComboBox.addValueChangeListener(event -> {
+            formulaireSelected = formulaireComboBox.getValue();
+            buildFormulaire(formulaireSelected.getLibelleFormulaire(),formulaire);
+            addComponent(formulaire);
+        });
 
-        HorizontalLayout h2 = new HorizontalLayout();
-        h2.addComponents(formulaireComboBox);
-
+        // On ajoute les 2 combobox
         addComponents(teamComboBox,formulaireComboBox);
+
+        //On fabrique le formulaire
         Label liste = new Label("Liste des questions");
         liste.setStyleName("question");
 
         addComponent(liste);
-        //sample.select(data.get(0));
-        formulaireComboBox.setSizeUndefined();
-        formulaireComboBox.addSelectionListener(event -> {
-
-            String formulaire = (String) event.getValue();
-            buildFormulaire(formulaire,this);
-        });
 
 
     }
@@ -91,8 +83,10 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     textField.setWidthUndefined();
                     else
                         textField.setWidth(formulaireQuestion.getLargeur());
+                    listTextField.add(textField);
+                    typeQuestion.add("TEXTFIELD");
+                    numQuestion.add(formulaireQuestion.getId());
                     monlayout.addComponent(textField);
-
                 } else {
                     TextArea textArea = new TextArea(formulaireQuestion.getLibelleField());
                     textArea.addStyleName("inline-label");
@@ -100,9 +94,10 @@ public class FormulaireChoice extends VerticalLayout implements View{
                         textArea.setWidthUndefined();
                     else
                         textArea.setWidth(formulaireQuestion.getLargeur());
-
+                    listTextArea.add(textArea);
+                    typeQuestion.add("TEXTAREA");
+                    numQuestion.add(formulaireQuestion.getId());
                     monlayout.addComponent(textArea);
-
                 }
             }
             else {
@@ -113,31 +108,39 @@ public class FormulaireChoice extends VerticalLayout implements View{
                 FormulaireParameter fp = FormulaireParameterRepository.getById(codeParameter,em);
                 if (fp.getTypeRepresentation().equalsIgnoreCase("COMBOBOX"))
                 {
-                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
-                    ComboBox<String> comboBox = new ComboBox<>(fp.getLibelle());
+                    List<String> list = FormulaireValueRepository.listValues(codeParameter,em);
+                    ComboBox<String> comboBox = new ComboBox<String>(fp.getLibelle());
                     comboBox.addStyleName("inline-label");
 
                     list.forEach(formulaireValue->{
-                        comboBox.setItems(formulaireValue.getLibelleValue());
-
+                        comboBox.setItems(formulaireValue);
                     });
+                    listComboBox.add(comboBox);
+                    typeQuestion.add("COMBOBOX");
+                    numQuestion.add(formulaireQuestion.getId());
                     monlayout.addComponent(comboBox);
                 }
                 if (fp.getTypeRepresentation().equalsIgnoreCase("RADIOBOUTON"))
                 {
-                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
-                    RadioButtonGroup radioBouton = new RadioButtonGroup<>(formulaireQuestion.getLibelleField(), list);
+                    List<String> list = FormulaireValueRepository.listValues(codeParameter,em);
+                    RadioButtonGroup<String> radioBouton = new RadioButtonGroup<String>(formulaireQuestion.getLibelleField(), list);
                     radioBouton.addStyleName("inline-label");
-                    radioBouton.setItemCaptionGenerator(item -> ((FormulaireValue) item).getLibelleValue());
+                    radioBouton.setItemCaptionGenerator(item -> item);
+                    listRadioButtonGroup.add(radioBouton);
+                    typeQuestion.add("RADIOBUTTON");
+                    numQuestion.add(formulaireQuestion.getId());
                     monlayout.addComponent(radioBouton);
 
                 }
                 if (fp.getTypeRepresentation().equalsIgnoreCase("CHECKBOX"))
                 {
-                    List<FormulaireValue> list = FormulaireValueRepository.findAll(codeParameter,em);
-                    CheckBoxGroup checkBoxGroup = new CheckBoxGroup<>(formulaireQuestion.getLibelleField(), list);
+                    List<String> list = FormulaireValueRepository.listValues(codeParameter,em);
+                    CheckBoxGroup<String> checkBoxGroup = new CheckBoxGroup<String>(formulaireQuestion.getLibelleField(), list);
                     checkBoxGroup.addStyleName("inline-label");
-                    checkBoxGroup.setItemCaptionGenerator(item -> ((FormulaireValue) item).getLibelleValue());
+                    checkBoxGroup.setItemCaptionGenerator(item -> item);
+                    listCheckBoxGroup.add(checkBoxGroup);
+                    typeQuestion.add("CHECKBOX");
+                    numQuestion.add(formulaireQuestion.getId());
                     monlayout.addComponent(checkBoxGroup);
                 }
 
@@ -146,11 +149,99 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
         HorizontalLayout h = new HorizontalLayout();
 
-        Button OK = new Button("Save");
+        Button OK = new Button("Save",this::ok);
+
         Button Cancel = new Button("Cancel");
         h.addComponents(OK,Cancel);
         monlayout.addComponents(h);
         OK.focus();
+
+    }
+
+    public void ok(Button.ClickEvent e)
+    {
+        Window window = new Window("Ecriture du formulaire");
+        VerticalLayout v = new VerticalLayout();
+        Label l1 = new Label("Team:" + teamSelected.getNomteam());
+        Label l2 = new Label("Formulaire:" + formulaireSelected.getLibelleFormulaire());
+        v.addComponents(l1,l2);
+        int nbTextField=0;
+        int nbTextArea=0;
+        int nbComboBox=0;
+        int nbRadioButton=0;
+        int nbCheckBox=0;
+        int nbQuestion=0;
+        for(String reponse: typeQuestion) {
+            FormulaireReponse fr = new FormulaireReponse();
+
+            switch (reponse) {
+
+                case "TEXTFIELD":
+                    TextField t = listTextField.get(nbTextField);
+                    Label ll1 = new Label(numQuestion.get(nbQuestion) + ":" + t.getValue());
+                    v.addComponent(ll1);
+                    fr = new FormulaireReponse(
+                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), t.getValue());
+                    FormulaireReponseRepository.add(fr);
+                    nbTextField++;
+                    nbQuestion++;
+
+                    break; // optional
+                case "TEXTAREA":
+                    TextArea t2 = listTextArea.get(nbTextArea);
+                    Label ll2 = new Label(numQuestion.get(nbQuestion) + ":" + t2.getValue());
+                    v.addComponent(ll2);
+                    fr = new FormulaireReponse(
+                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), t2.getValue());
+                    FormulaireReponseRepository.add(fr);
+                    nbTextArea++;
+                    nbQuestion++;
+
+                    break; // optional
+                // You can have any number of case statements.
+                case "COMBOBOX":
+                    ComboBox<String> c = listComboBox.get(nbComboBox);
+                    Label ll3 = new Label(numQuestion.get(nbQuestion) + ":" + c.getValue());
+                    v.addComponent(ll3);
+                    fr = new FormulaireReponse(
+                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), c.getValue());
+                    FormulaireReponseRepository.add(fr);
+                    nbComboBox++;
+                    nbQuestion++;
+
+                    break; // optional
+                case "CHECKBOX":
+                    CheckBoxGroup<String> r = listCheckBoxGroup.get(nbRadioButton);
+                    Label ll4 = new Label(numQuestion.get(nbQuestion) + ":" + r.getValue().toString());
+
+                    v.addComponent(ll4);
+                    fr = new FormulaireReponse(
+                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), r.getValue().toString());
+                    FormulaireReponseRepository.add(fr);
+                    nbRadioButton++;
+                    nbQuestion++;
+                    break; // optional
+                case "RADIOBUTTON":
+                    RadioButtonGroup<String> rb = listRadioButtonGroup.get(nbCheckBox);
+                    Label ll5 = new Label(numQuestion.get(nbQuestion) + ":" + rb.getValue());
+                    v.addComponent(ll5);
+                    fr = new FormulaireReponse(
+                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), rb.getValue());
+                    FormulaireReponseRepository.add(fr);
+                    nbCheckBox++;
+                    nbQuestion++;
+
+                    break; // optional
+                default: // Optional
+                    // Statements
+
+            }
+        }
+
+        window.setContent(v);
+
+        this.getParent().getUI().addWindow(window);
+
 
     }
 }

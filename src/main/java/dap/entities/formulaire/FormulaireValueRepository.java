@@ -17,18 +17,18 @@ public class FormulaireValueRepository {
 
     static FormulaireValue formulaireValue;
 
-    public static List<FormulaireValue> findAll() {
+    public static List<FormulaireValue> listValues() {
         return JPAService.runInTransaction(em ->
                 em.createQuery("select f from FormulaireValue f").getResultList()
         );
     }
 
-    public static List<FormulaireValue> findAll(String CodeParameter,EntityManager em) {
-        Query query = em.createQuery("select u " +
+    public static List<String> listValues(String CodeParameter, EntityManager em) {
+        Query query = em.createQuery("select libelleValue " +
                 "from FormulaireValue u " +
                 "where u.codeParameter=:CodeParameter");
         query.setParameter("CodeParameter", CodeParameter);
-        return (List<FormulaireValue>) query.getResultList();
+        return (List<String>) query.getResultList();
     }
 
 

@@ -9,6 +9,7 @@
         <class>dap.entities.contacts.Contacts</class>
         <class>dap.entities.formulaire.FormulaireParameter</class>
         <class>dap.entities.formulaire.FormulaireValue</class>
+        <class>dap.entities.formulaire.FormulaireReponse</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/h2"/>
