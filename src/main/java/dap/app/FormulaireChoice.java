@@ -39,6 +39,36 @@ public class FormulaireChoice extends VerticalLayout implements View{
         teamComboBox.setEmptySelectionAllowed(false);
         teamComboBox.addValueChangeListener(event -> {
             teamSelected = teamComboBox.getValue();
+            Window window = new Window();
+            VerticalLayout v = new VerticalLayout();
+            List<FormulaireResultat> res= FormulaireResultatRepository.findAll(teamSelected.getId());
+            FormulaireResultat r = new FormulaireResultat();
+
+            if (res.size()> 0)
+            {
+
+                Label Titre = new Label("FORMULAIRES EN COURS POUR CETTE TEAM");
+                Titre.setStyleName("titrewindow");
+                FormLayout f = new FormLayout();
+
+                ListSelect<FormulaireResultat> formulaireList = new ListSelect("Liste des formulaires");
+                formulaireList.setStyleName("inline-label");
+                formulaireList.setItems(res);
+                formulaireList.setWidth("300");
+                formulaireList.setItemCaptionGenerator(FormulaireResultat::libelleComplet);
+                Button updateFormulaire = new Button("Update");
+                Button newFormulaire = new Button("New FORM");
+                HorizontalLayout h = new HorizontalLayout();
+
+                h.addComponents(updateFormulaire,newFormulaire);
+                f.addComponents(formulaireList,h);
+                v.addComponents(Titre,f);
+                window.setContent(v);
+                window.center();
+                window.setWidth("650");
+                this.getParent().getUI().addWindow(window);
+            }
+
         });
 
         // LISTE DES FORMULAIRES
@@ -49,6 +79,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
         formulaireComboBox.setItems(listFormulaire);
         formulaireComboBox.setItemCaptionGenerator(Formulaire::getLibelleFormulaire);
         formulaireComboBox.setEmptySelectionAllowed(false);
+
         VerticalLayout formulaire = new VerticalLayout();
         formulaireComboBox.addValueChangeListener(event -> {
             formulaireSelected = formulaireComboBox.getValue();
@@ -171,6 +202,10 @@ public class FormulaireChoice extends VerticalLayout implements View{
         int nbRadioButton=0;
         int nbCheckBox=0;
         int nbQuestion=0;
+        FormulaireResultat FormRes = new FormulaireResultat(teamSelected.getId(), formulaireSelected.getId());
+
+        FormulaireResultat resultat = FormulaireResultatRepository.add(FormRes);
+
         for(String reponse: typeQuestion) {
             FormulaireReponse fr = new FormulaireReponse();
 
@@ -180,8 +215,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     TextField t = listTextField.get(nbTextField);
                     Label ll1 = new Label(numQuestion.get(nbQuestion) + ":" + t.getValue());
                     v.addComponent(ll1);
-                    fr = new FormulaireReponse(
-                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), t.getValue());
+                    fr = new FormulaireReponse(resultat.getId(),numQuestion.get(nbQuestion), t.getValue());
                     FormulaireReponseRepository.add(fr);
                     nbTextField++;
                     nbQuestion++;
@@ -191,8 +225,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     TextArea t2 = listTextArea.get(nbTextArea);
                     Label ll2 = new Label(numQuestion.get(nbQuestion) + ":" + t2.getValue());
                     v.addComponent(ll2);
-                    fr = new FormulaireReponse(
-                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), t2.getValue());
+                    fr = new FormulaireReponse(resultat.getId(), numQuestion.get(nbQuestion), t2.getValue());
                     FormulaireReponseRepository.add(fr);
                     nbTextArea++;
                     nbQuestion++;
@@ -203,8 +236,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     ComboBox<String> c = listComboBox.get(nbComboBox);
                     Label ll3 = new Label(numQuestion.get(nbQuestion) + ":" + c.getValue());
                     v.addComponent(ll3);
-                    fr = new FormulaireReponse(
-                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), c.getValue());
+                    fr = new FormulaireReponse(resultat.getId(), numQuestion.get(nbQuestion), c.getValue());
                     FormulaireReponseRepository.add(fr);
                     nbComboBox++;
                     nbQuestion++;
@@ -215,8 +247,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     Label ll4 = new Label(numQuestion.get(nbQuestion) + ":" + r.getValue().toString());
 
                     v.addComponent(ll4);
-                    fr = new FormulaireReponse(
-                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), r.getValue().toString());
+                    fr = new FormulaireReponse(resultat.getId(), numQuestion.get(nbQuestion), r.getValue().toString());
                     FormulaireReponseRepository.add(fr);
                     nbRadioButton++;
                     nbQuestion++;
@@ -225,8 +256,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     RadioButtonGroup<String> rb = listRadioButtonGroup.get(nbCheckBox);
                     Label ll5 = new Label(numQuestion.get(nbQuestion) + ":" + rb.getValue());
                     v.addComponent(ll5);
-                    fr = new FormulaireReponse(
-                            teamSelected.getId(), formulaireSelected.getId(), numQuestion.get(nbQuestion), rb.getValue());
+                    fr = new FormulaireReponse(resultat.getId(), numQuestion.get(nbQuestion), rb.getValue());
                     FormulaireReponseRepository.add(fr);
                     nbCheckBox++;
                     nbQuestion++;

@@ -10,7 +10,7 @@ public class test {
         EntityManager em = JPAService.getFactory().createEntityManager();
         //User u = UserRepository.getById(1L, em);
 
-        FormulaireValueRepository.getById(1,JPAService.getFactory().createEntityManager());
+        FormulaireResultatRepository.getById(1185,JPAService.getFactory().createEntityManager());
 
         JPAService.close();
     }

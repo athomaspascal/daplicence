@@ -15064,6 +15064,15 @@ div.v-layout.v-horizontal.v-widget {
 	padding: 5px;
 }
 
+.mytheme .v-label-titrewindow {
+	color: blue;
+	font-size: 18pt;
+	line-height: 18pt;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+	padding: 5px;
+}
+
 .mytheme .v-label-question {
 	background: black;
 	color: white;

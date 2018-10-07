@@ -8,8 +8,7 @@ import java.util.Objects;
 public class FormulaireReponse {
     private int id;
     private String reponse;
-    private float idFormulaire;
-    private float idTeam;
+    private int idResultat;
     private int idQuestion;
 
     public FormulaireReponse()
@@ -18,10 +17,9 @@ public class FormulaireReponse {
     }
 
 
-    public FormulaireReponse (float idformulaire, float idteam, int idquestion, String rep)
+    public FormulaireReponse (int idresultat, int idquestion, String rep)
     {
-        idFormulaire= idformulaire;
-        idTeam = idteam ;
+        idResultat = idresultat;
         idQuestion = idquestion ;
         reponse = rep;
     }
@@ -62,24 +60,15 @@ public class FormulaireReponse {
     }
 
     @Basic
-    @Column(name = "ID_FORMULAIRE", nullable = true)
-    public float getIdFormulaire() {
-        return idFormulaire;
+    @Column(name = "ID_RESULTAT", nullable = true)
+    public int getIdResultat() {
+        return idResultat;
     }
 
-    public void setIdFormulaire(float idFormulaire) {
-        this.idFormulaire = idFormulaire;
+    public void setIdResultat(int idreponse) {
+        this.idResultat = idreponse;
     }
 
-    @Basic
-    @Column(name = "ID_TEAM", nullable = true)
-    public float getIdTeam() {
-        return idTeam;
-    }
-
-    public void setIdTeam(float idTeam) {
-        this.idTeam = idTeam;
-    }
 
     @Basic
     @Column(name = "ID_QUESTION", nullable = true)

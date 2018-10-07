@@ -45,7 +45,7 @@ public class FormulaireRepository {
         });
     }
 
-    private static Formulaire getById(Long id, EntityManager em) {
+    public static Formulaire getById(Long id, EntityManager em) {
         Query query = em.createQuery("select u from Formulaire u where u.id=:id");
         query.setParameter("id", id);
 
