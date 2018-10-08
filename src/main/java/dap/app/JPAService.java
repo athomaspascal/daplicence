@@ -25,7 +25,7 @@ public class JPAService {
     public static void init() {
         if (factory == null) {
             factory = Persistence.createEntityManagerFactory("test-pu");
-            createTestData();
+            //createTestData();
         }
     }
 

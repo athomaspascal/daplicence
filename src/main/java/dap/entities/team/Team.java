@@ -11,42 +11,35 @@ import java.util.Objects;
 public class Team {
     @NotNull
     @Id
-    @GeneratedValue
     private long id;
 
-    @Basic
-    @Column(name = "NOMTEAM", nullable = true, length = 50)
     private String nomteam;
-
+    private String teamBossName;
+    private String teamBossEmail;
 
     @ManyToOne
     private Division userDivision;
 
     @Basic
-    @Column(name = "TEAMBOSSNAME", nullable = true, length = 50)
-    private String teamBossName;
-    @Basic
     @Column(name = "TEAMBOSSEMAIL", nullable = true, length = 50)
-    private String teamBossEmail;
-
     public String getTeamBossEmail() {
         return teamBossEmail;
     }
-
     public void setTeamBossEmail(String teamBossEmail) {
         this.teamBossEmail = teamBossEmail;
     }
 
-
+    @Basic
+    @Column(name = "TEAMBOSSNAME", nullable = true, length = 50)
     public String getTeamBossName() {
         return teamBossName;
     }
-
     public void setTeamBossName(String teamBossName) {
         this.teamBossName = teamBossName;
     }
 
-
+    @Basic
+    @Column(name = "NOMTEAM", nullable = true, length = 50)
     public String getNomteam() {
         return nomteam;
     }
@@ -55,23 +48,21 @@ public class Team {
     }
 
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     @ManyToOne
     public Division getUserDivision() {
         return userDivision;
     }
-
     public void setUserDivision(Division userDivision) {
         this.userDivision = userDivision;
     }
 
+    @GeneratedValue
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
 
     @Override

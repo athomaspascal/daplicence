@@ -22,12 +22,12 @@ public class DivisionRepository {
     }
     public static void delete(Division division) {
         JPAService.runInTransaction(em -> {
-            em.remove(getById((long) division.getId(), em));
+            em.remove(getById((int) division.getId(), em));
             return null;
         });
     }
 
-    private static Division getById(Long id, EntityManager em) {
+    public static Division getById(int id, EntityManager em) {
         Query query = em.createQuery("select u from Division u where u.id=:id");
         query.setParameter("id", id);
 

@@ -1,22 +1,33 @@
 package dap.app;
 
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.UI;
+import dap.entities.enterprise.Division;
+import dap.entities.enterprise.DivisionRepository;
+import dap.entities.team.Team;
+import dap.entities.team.TeamRepository;
+
+import javax.persistence.EntityManager;
 
 
-public class test extends UI {
+public class test  {
     public static void main(String[] args) throws Exception {
+        JPAService.init();
+        EntityManager em = JPAService.getFactory().createEntityManager();
+        //User u = UserRepository.getById(1L, em);
 
-    }
+        Team t = new Team();
+
+        t.setNomteam("TEAM 1");
+        t.setTeamBossName("BOSS 1");
+        t.setTeamBossEmail("boss@email.com");
+        Division div = DivisionRepository.getById(0,em);
 
 
-    @Override
-    protected void init(VaadinRequest vaadinRequest) {
-        HorizontalLayout h1 = new HorizontalLayout();
-        Label l = new Label("test");
+        t.setUserDivision(div);
 
-        setContent(l);
+        TeamRepository.save(t);
+
+        //FormulaireResultatRepository.getById(1185,JPAService.getFactory().createEntityManager());
+
+        JPAService.close();
     }
 }
