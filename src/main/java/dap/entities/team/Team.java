@@ -11,6 +11,8 @@ import java.util.Objects;
 public class Team {
     @NotNull
     @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String nomteam;

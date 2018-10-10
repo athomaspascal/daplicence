@@ -1,4 +1,4 @@
-package dap.app;
+package dap.entities;
 
 import dap.entities.user.User;
 import dap.entities.user.UserRepository;

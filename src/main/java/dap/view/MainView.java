@@ -1,4 +1,4 @@
-package dap.app;
+package dap.view;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
@@ -33,9 +33,10 @@ public class MainView extends HorizontalLayout implements View {
         Image imageContacts = setImage(pathImage+ "Contacts.png",imageStyle,width,height,"Contacts");
         Image image = setImage(pathImage+ "Users.jpg",imageStyle,width,height,"Licence");
         Image imageFormulaire = setImage(pathImage+ "formulaire.png",imageStyle,width,height,"Formulaire");
+        Image imageConfigFormulaire = setImage(pathImage+ "configure-formulaire.png",imageStyle,width,height,"Config");
 
         HorizontalLayout h = new HorizontalLayout();
-        HorizontalLayout h2 = new HorizontalLayout(imageContacts,imageFormulaire);
+        HorizontalLayout h2 = new HorizontalLayout(imageContacts,imageFormulaire,imageConfigFormulaire);
         h.addComponents(image,imageTeam,imageProduct);
         VerticalLayout v1 = new VerticalLayout();
         v1.addComponents(titre,h,h2);

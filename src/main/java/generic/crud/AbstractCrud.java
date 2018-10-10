@@ -68,13 +68,18 @@ public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
         this.deleteOperation = deleteOperation;
     }
 
+
     @Override
-    public void setOperations(FindAllCrudOperationListener<T> findAllOperation, AddOperationListener<T> addOperation, UpdateOperationListener<T> updateOperation, DeleteOperationListener<T> deleteOperation) {
+    public void setOperations(FindAllCrudOperationListener<T> findAllOperation,
+                              AddOperationListener<T> addOperation,
+                              UpdateOperationListener<T> updateOperation,
+                              DeleteOperationListener<T> deleteOperation) {
         setFindAllOperation(findAllOperation);
         setAddOperation(addOperation);
         setUpdateOperation(updateOperation);
         setDeleteOperation(deleteOperation);
     }
+
 
     @Override
     public CrudFormFactory<T> getCrudFormFactory() {

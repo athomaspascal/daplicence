@@ -1,6 +1,7 @@
-package dap.app;
+package dap.crudview;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.View;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.TextRenderer;
@@ -19,7 +20,7 @@ import generic.layout.impl.HorizontalSplitCrudLayout;
 import java.util.Collection;
 
 @Theme("mytheme")
-public class TeamCrudView extends VerticalLayout implements CrudListener<Team> {
+public class TeamCrudView extends VerticalLayout implements View, CrudListener<Team> {
 
 
     private TabSheet tabSheet = new TabSheet();
@@ -78,18 +79,13 @@ public class TeamCrudView extends VerticalLayout implements CrudListener<Team> {
  
     @Override
     public Team add(Team team) {
-        TeamRepository.save(team);
+        TeamRepository.add(team);
         return team;
     }
 
     @Override
     public Team update(Team team) {
-        /*
-        if (team.getId().equals(5l)) {
-            throw new RuntimeException("A simulated error has occurred");
-        }
-        */
-        return TeamRepository.save(team);
+          return TeamRepository.save(team);
     }
 
     @Override

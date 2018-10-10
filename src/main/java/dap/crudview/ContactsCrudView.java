@@ -1,4 +1,4 @@
-package dap.app;
+package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
@@ -20,14 +20,14 @@ import generic.layout.impl.HorizontalSplitCrudLayout;
 import java.util.Collection;
 
 @Theme("mytheme")
-public class ContactsView extends VerticalLayout implements View, CrudListener<Contacts> {
+public class ContactsCrudView extends VerticalLayout implements View, CrudListener<Contacts> {
 
 
     private TabSheet tabSheet = new TabSheet();
 
 
 
-    public ContactsView() {
+    public ContactsCrudView() {
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All Contacts");
         addComponent(tabSheet);

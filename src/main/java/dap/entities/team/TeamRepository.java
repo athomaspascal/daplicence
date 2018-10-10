@@ -1,6 +1,6 @@
 package dap.entities.team;
 
-import dap.app.JPAService;
+import dap.entities.JPAService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -19,6 +19,15 @@ public class TeamRepository {
 
     public static Team save(Team team) {
         return JPAService.runInTransaction(em -> em.merge(team));
+    }
+
+    public static Team add(Team team) {
+        Team newTeam = new Team();
+        newTeam.setUserDivision(team.getUserDivision());
+        newTeam.setTeamBossEmail(team.getTeamBossEmail());
+        newTeam.setTeamBossName(team.getTeamBossName());
+        newTeam.setNomteam(team.getNomteam());
+        return JPAService.runInTransaction(em -> em.merge(newTeam));
     }
 
     public static void delete(Team team) {

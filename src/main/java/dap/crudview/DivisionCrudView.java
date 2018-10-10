@@ -1,8 +1,9 @@
-package dap.app;
+package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
+import dap.entities.JPAService;
 import dap.entities.enterprise.Division;
 import dap.entities.enterprise.DivisionRepository;
 import generic.crud.Crud;
@@ -12,6 +13,7 @@ import generic.crud.impl.GridCrud;
 import generic.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import generic.layout.impl.HorizontalSplitCrudLayout;
 
+import javax.persistence.EntityManager;
 import java.util.Collection;
 
 @Theme("mytheme")
@@ -19,15 +21,14 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
 
 
     private TabSheet tabSheet = new TabSheet();
+    private TeamCrudView t;
 
 
-
-    public DivisionCrudView() {
+    public DivisionCrudView(TeamCrudView tt) {
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All Division");
+        t = tt;
         addComponent(tabSheet);
-
-
     }
 
     private void addCrud(Crud crud, String caption) {
@@ -66,24 +67,24 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
 
         crud.setClickRowToUpdate(true);
         crud.setUpdateOperationVisible(false);
-
         return crud;
     }
 
  
     @Override
     public Division add(Division division) {
-        DivisionRepository.save(division);
+        EntityManager em = JPAService.getFactory().createEntityManager();
+        DivisionRepository.add(division,em);
+        em.close();
+        VerticalLayout v = (VerticalLayout) this.getParent();
+        TeamCrudView newTeamCrudView = new TeamCrudView();
+        v.replaceComponent(t,newTeamCrudView);
+        t = newTeamCrudView;
         return division;
     }
 
     @Override
     public Division update(Division division) {
-        /*
-        if (division.getId().equals(5l)) {
-            throw new RuntimeException("A simulated error has occurred");
-        }
-        */
         return DivisionRepository.save(division);
     }
 

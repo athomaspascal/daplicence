@@ -1,6 +1,8 @@
 package dap.entities.formulaire;
 
-import dap.app.JPAService;
+import dap.entities.JPAService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 import javax.persistence.EntityManager;
@@ -8,6 +10,10 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class FormulaireRepository {
+    static Logger logger = LogManager.getLogger("elastic-generator");
+    public static void add(Formulaire formulaire, EntityManager em) {
+    }
+
     public Formulaire getFormulaire() {
         return formulaire;
     }
@@ -29,9 +35,13 @@ public class FormulaireRepository {
     }
 
     public static Formulaire add(Formulaire myFormulaire) {
+        Formulaire f = new Formulaire();
+        f.setDateCreation(myFormulaire.getDateCreation());
+        f.setLibelleFormulaire(myFormulaire.getLibelleFormulaire());
         JPAService.runInTransaction(em -> {
-            em.persist(myFormulaire);
-            FormulaireRepository.formulaire = myFormulaire;
+            logger.info("FormulaireRepository add");
+            em.persist(f);
+            FormulaireRepository.formulaire = f;
             return null;
         });
         return FormulaireRepository.formulaire;

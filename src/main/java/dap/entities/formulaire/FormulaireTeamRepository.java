@@ -1,6 +1,6 @@
 package dap.entities.formulaire;
 
-import dap.app.JPAService;
+import dap.entities.JPAService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -28,6 +28,7 @@ public class FormulaireTeamRepository {
     }
 
     public static FormulaireTeam add(FormulaireTeam myFormulaire) {
+
         JPAService.runInTransaction(em -> {
             em.persist(myFormulaire);
             FormulaireTeamRepository.formulaire = myFormulaire;

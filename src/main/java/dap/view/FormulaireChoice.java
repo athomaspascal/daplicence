@@ -1,8 +1,9 @@
-package dap.app;
+package dap.view;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
+import dap.entities.JPAService;
 import dap.entities.formulaire.*;
 import dap.entities.team.Team;
 import dap.entities.team.TeamRepository;

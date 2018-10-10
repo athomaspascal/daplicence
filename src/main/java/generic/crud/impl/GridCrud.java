@@ -14,6 +14,8 @@ import generic.crudform.CrudFormFactory;
 import generic.crudform.impl.form.factory.VerticalCrudFormFactory;
 import generic.layout.CrudLayout;
 import generic.layout.impl.WindowBasedCrudLayout;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Collection;
 
@@ -21,7 +23,7 @@ import java.util.Collection;
  * @author
  */
 public class GridCrud<T> extends AbstractCrud<T> {
-
+    static Logger logger = LogManager.getLogger("elastic-generator");
     protected String rowCountCaption = "%d items(s) found";
     protected String savedMessage = "Item saved";
     protected String deletedMessage = "Item deleted";
@@ -135,17 +137,19 @@ public class GridCrud<T> extends AbstractCrud<T> {
         T domainObject = grid.asSingleSelect().getValue();
 
         if (domainObject != null) {
+            logger.info("gridSelectionChanged:buildNewForm" );
             Component form = crudFormFactory.buildNewForm(CrudOperation.READ, domainObject, true, null, event -> {
                 grid.asSingleSelect().clear();
             });
 
             crudLayout.showForm(CrudOperation.READ, form);
-
+            logger.info("gridSelectionChanged:" + clickRowToUpdate);
             if (clickRowToUpdate) {
                 updateButtonClicked();
             }
 
         } else {
+            logger.info("gridSelectionChanged:hideform" );
             crudLayout.hideForm();
         }
     }
@@ -159,8 +163,12 @@ public class GridCrud<T> extends AbstractCrud<T> {
     protected void addButtonClicked() {
         try {
             T domainObject = domainType.newInstance();
+            //clickRowToUpdate = false;
             showForm(CrudOperation.ADD, domainObject, false, savedMessage, event -> {
                 try {
+
+                    //clickRowToUpdate = false;
+                    logger.info("Add buttonClicked:" + clickRowToUpdate);
                     T addedObject = addOperation.perform(domainObject);
                     refreshGrid();
                     if (items.contains(addedObject)) {
@@ -218,17 +226,21 @@ public class GridCrud<T> extends AbstractCrud<T> {
     protected void showForm(CrudOperation operation, T domainObject, boolean readOnly, String successMessage, Button.ClickListener buttonClickListener) {
         Component form = crudFormFactory.buildNewForm(operation, domainObject, readOnly,
                 cancelClickEvent -> {
+                    logger.info("show form:" + clickRowToUpdate);
                     if (clickRowToUpdate) {
                         grid.asSingleSelect().clear();
                     } else {
                         T selected = grid.asSingleSelect().getValue();
+                        logger.info("hide form");
                         crudLayout.hideForm();
                         grid.asSingleSelect().clear();
                         grid.asSingleSelect().setValue(selected);
                     }
                 },
                 operationPerformedClickEvent -> {
+                    logger.info("hide form");
                     crudLayout.hideForm();
+                    logger.info("performclickEvent:" + clickRowToUpdate);
                     buttonClickListener.buttonClick(operationPerformedClickEvent);
                     Notification.show(successMessage);
                 });

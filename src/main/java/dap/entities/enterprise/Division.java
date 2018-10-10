@@ -1,23 +1,26 @@
 package dap.entities.enterprise;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 public class Division {
+    @NotNull
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Basic
+    @Column(name = "NAME_DIVISION", nullable = false, length = 50)
     private String nameDivision;
     private String description;
 
-    @Id
-    @Column(name = "ID", nullable = false)
+
+    @GeneratedValue
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

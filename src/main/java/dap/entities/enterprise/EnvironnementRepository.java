@@ -1,6 +1,6 @@
 package dap.entities.enterprise;
 
-import dap.app.JPAService;
+import dap.entities.JPAService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

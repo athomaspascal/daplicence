@@ -1,4 +1,4 @@
-package dap.app;
+package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
@@ -17,14 +17,14 @@ import dap.entities.product.ProductRepository;
 import java.util.Collection;
 
 @Theme("mytheme")
-public class ProductView extends VerticalLayout implements View, CrudListener<Product> {
+public class ProductCrudView extends VerticalLayout implements View, CrudListener<Product> {
 
 
     private TabSheet tabSheet = new TabSheet();
 
 
 
-    public ProductView() {
+    public ProductCrudView() {
         Label titre = new Label("Product management");
         titre.setStyleName("titre");
         tabSheet.setSizeFull();

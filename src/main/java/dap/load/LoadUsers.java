@@ -1,6 +1,6 @@
 package dap.load;
 
-import dap.app.JPAService;
+import dap.entities.JPAService;
 import dap.entities.user.User;
 import dap.entities.user.UserRepository;
 import elastic.ElasticClient;

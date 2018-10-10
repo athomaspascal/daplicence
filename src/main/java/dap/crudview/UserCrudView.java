@@ -1,4 +1,4 @@
-package dap.app;
+package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
@@ -6,6 +6,7 @@ import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.renderers.DateRenderer;
 import com.vaadin.ui.renderers.TextRenderer;
+import dap.entities.JPAService;
 import generic.crud.CrudListenerWithFilter;
 import generic.crud.CrudOperation;
 import generic.crud.CrudWithFilter;
@@ -33,14 +34,14 @@ import java.util.List;
 import java.util.Properties;
 
 @Theme("mytheme")
-public class UserView extends VerticalLayout implements View, CrudListenerWithFilter<User> {
+public class UserCrudView extends VerticalLayout implements View, CrudListenerWithFilter<User> {
 
 
     private TabSheet tabSheet = new TabSheet();
 
 
 
-    public UserView() {
+    public UserCrudView() {
         Label titre = new Label("Users");
         titre.setStyleName("titre");
         tabSheet.setSizeFull();
