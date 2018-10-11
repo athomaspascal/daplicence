@@ -17,7 +17,7 @@ public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
     protected AddOperationListener<T> addOperation = t -> null;
     protected UpdateOperationListener<T> updateOperation = t -> null;
     protected DeleteOperationListener<T> deleteOperation = t -> { };
-
+    
     protected CrudLayout crudLayout;
     protected CrudFormFactory<T> crudFormFactory;
 

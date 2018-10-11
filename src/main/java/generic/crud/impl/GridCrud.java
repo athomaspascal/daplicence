@@ -157,6 +157,8 @@ public class GridCrud<T> extends AbstractCrud<T> {
     protected void findAllButtonClicked() {
         grid.asSingleSelect().clear();
         refreshGrid();
+        //modif 11/10/2018
+        //clickRowToUpdate = false;
         Notification.show(String.format(rowCountCaption, grid.getDataProvider().size(new Query())));
     }
 
@@ -229,6 +231,8 @@ public class GridCrud<T> extends AbstractCrud<T> {
                     logger.info("show form:" + clickRowToUpdate);
                     if (clickRowToUpdate) {
                         grid.asSingleSelect().clear();
+                        // modif 11/10/2018
+                        crudLayout.hideForm();
                     } else {
                         T selected = grid.asSingleSelect().getValue();
                         logger.info("hide form");

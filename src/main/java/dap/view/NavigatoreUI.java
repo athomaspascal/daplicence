@@ -7,10 +7,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
-import dap.crudview.ContactsCrudView;
-import dap.crudview.FormulaireCrudView;
-import dap.crudview.ProductCrudView;
-import dap.crudview.UserCrudView;
+import dap.crudview.*;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -35,6 +32,7 @@ public class NavigatoreUI extends UI {
         navigator.addView("Contacts", ContactsCrudView.class);
         navigator.addView("Formulaire", FormulaireChoice.class);
         navigator.addView("Config", FormulaireCrudView.class);
+        navigator.addView("Question", Question.class);
         navigator.navigateTo("Main");
     }
 }

@@ -20,7 +20,15 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
 
 
     private TabSheet tabSheet = new TabSheet();
+    FormulaireQuestionCrudView q;
+    View parent;
 
+    public FormulaireCrudView(FormulaireQuestionCrudView fc, View theParent)
+    {
+        q= fc;
+        parent = theParent;
+        new FormulaireCrudView();
+    }
 
 
     public FormulaireCrudView() {
@@ -92,4 +100,9 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
         return FormulaireRepository.findAll();
     }
 
+    @Override
+    public void displaySlaveCrud()
+    {
+
+    }
 }

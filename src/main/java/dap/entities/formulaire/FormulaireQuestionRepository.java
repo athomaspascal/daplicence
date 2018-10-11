@@ -23,6 +23,12 @@ public class FormulaireQuestionRepository {
         );
     }
 
+    public static List<FormulaireQuestion> findAll(int numForulaire) {
+        return JPAService.runInTransaction(em ->
+                em.createQuery("select f from FormulaireQuestion f" +
+                        " where idFormulaire = " + numForulaire).getResultList()
+        );
+    }
     public static List<FormulaireQuestion> findAllByFormulaire(String formulaireName) {
         if (JPAService.getFactory() == null)
             JPAService.init();

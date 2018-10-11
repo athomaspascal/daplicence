@@ -8,13 +8,12 @@ import javax.validation.constraints.NotNull;
 public class FormulaireQuestion {
     @NotNull
     @Id
-    @GeneratedValue
+    @Column(name = "ID", length = 50)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-
-
     @Column(name = "ID_FORMULAIRE", nullable = true, length = 50)
-    String idFormulaire;
+    int idFormulaire;
 
     @Column(name = "CODE_PARAMETER", nullable = true, length = 50)
     String codeParameter;
@@ -24,6 +23,21 @@ public class FormulaireQuestion {
     String descriptionField;
     @Column(name = "FLAG_MANDATORY", nullable = true, length = 50)
     int flagObligatoire;
+    @Column(name = "QUESTION_ORDER", nullable = true, length = 50)
+    int questionOrder;
+    @Column(name="LARGEUR", nullable = true)
+    String largeur;
+    @Column(name="TYPE_FIELD", nullable = true)
+    String typeField;
+
+    public int getQuestionOrder() {
+        return questionOrder;
+    }
+
+    public void setQuestionOrder(int questionOrder) {
+        this.questionOrder = questionOrder;
+    }
+
 
     public String getTypeField() {
         return typeField;
@@ -33,8 +47,6 @@ public class FormulaireQuestion {
         this.typeField = typeField;
     }
 
-    @Column(name="TYPE_FIELD")
-    String typeField;
 
     public String getLargeur() {
         return largeur;
@@ -44,8 +56,7 @@ public class FormulaireQuestion {
         this.largeur = largeur;
     }
 
-    @Column(name="LARGEUR")
-    String largeur;
+
 
     public int getId() {
         return id;
@@ -87,11 +98,11 @@ public class FormulaireQuestion {
         this.flagObligatoire = flagObligatoire;
     }
 
-    public String getIdFormulaire() {
+    public int getIdFormulaire() {
         return idFormulaire;
     }
 
-    public void setIdFormulaire(String idFormulaire) {
+    public void setIdFormulaire(int idFormulaire) {
         this.idFormulaire = idFormulaire;
     }
 }
