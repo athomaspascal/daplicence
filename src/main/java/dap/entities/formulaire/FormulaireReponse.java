@@ -6,9 +6,22 @@ import java.util.Objects;
 @Entity
 @Table(name = "FORMULAIRE_REPONSE", schema = "PUBLIC", catalog = "H2")
 public class FormulaireReponse {
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Basic
+    @Column(name = "REPONSE", nullable = true, length = 2000)
     private String reponse;
+
+
+    @Basic
+    @Column(name = "ID_RESULTAT", nullable = true)
     private int idResultat;
+
+
+    @Basic
+    @Column(name = "ID_QUESTION", nullable = true)
     private int idQuestion;
 
     public FormulaireReponse()
@@ -24,9 +37,7 @@ public class FormulaireReponse {
         reponse = rep;
     }
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
@@ -35,8 +46,6 @@ public class FormulaireReponse {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "REPONSE", nullable = true, length = 2000)
     public String getReponse() {
         return reponse;
     }
@@ -59,8 +68,6 @@ public class FormulaireReponse {
         return Objects.hash(id, reponse);
     }
 
-    @Basic
-    @Column(name = "ID_RESULTAT", nullable = true)
     public int getIdResultat() {
         return idResultat;
     }
@@ -70,8 +77,6 @@ public class FormulaireReponse {
     }
 
 
-    @Basic
-    @Column(name = "ID_QUESTION", nullable = true)
     public int getIdQuestion() {
         return idQuestion;
     }

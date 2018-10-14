@@ -98,4 +98,10 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
         return DivisionRepository.findAll();
     }
 
+    @Override
+    public Division displaySlaveCrud(Division division)
+    {
+        return null;
+    }
+
 }

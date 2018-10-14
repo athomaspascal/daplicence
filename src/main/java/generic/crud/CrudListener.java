@@ -16,7 +16,7 @@ public interface CrudListener<T> extends Serializable {
 
     void delete(T domainObjectToDelete);
 
-    void displaySlaveCrud();
+    T displaySlaveCrud(T domainObjectTodisplay);
 
 
 }

@@ -32,6 +32,9 @@ public interface Crud<T> extends Component {
     void setOperations(FindAllCrudOperationListener<T> findAllOperation, AddOperationListener<T> addOperation, UpdateOperationListener<T> updateOperation, DeleteOperationListener<T> deleteOperation);
 
     void setCrudListener(CrudListener<T> crudListener);
+
     CrudLayout getCrudLayout();
+
+    void setDisplaySlaveCrudListener(DisplaySlaveCrudListener<T> displaySlaveCrud);
 
 }

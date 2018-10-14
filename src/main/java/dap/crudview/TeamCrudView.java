@@ -98,4 +98,11 @@ public class TeamCrudView extends VerticalLayout implements View, CrudListener<T
         return TeamRepository.findAll();
     }
 
+
+    @Override
+    public Team displaySlaveCrud(Team team)
+    {
+        return null;
+
+    }
 }

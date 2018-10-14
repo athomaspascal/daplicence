@@ -153,4 +153,5 @@ public class UserCrudView extends VerticalLayout implements View, CrudListenerWi
         return UserRepository.findAll(filtre);
     }
 
+
 }

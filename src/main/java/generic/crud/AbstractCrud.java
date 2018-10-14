@@ -17,7 +17,8 @@ public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
     protected AddOperationListener<T> addOperation = t -> null;
     protected UpdateOperationListener<T> updateOperation = t -> null;
     protected DeleteOperationListener<T> deleteOperation = t -> { };
-    
+    protected DisplaySlaveCrudListener<T> displaySlaveCrudListener = t -> null;
+
     protected CrudLayout crudLayout;
     protected CrudFormFactory<T> crudFormFactory;
 
@@ -31,7 +32,9 @@ public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
         }
 
         setCompositionRoot(crudLayout);
-        setSizeFull();
+        //setSizeFull();
+        setHeightUndefined();
+
     }
 
     @Override
@@ -92,6 +95,11 @@ public abstract class AbstractCrud<T> extends Composite implements Crud<T> {
         setUpdateOperation(crudListener::update);
         setDeleteOperation(crudListener::delete);
         setFindAllOperation(crudListener::findAll);
+        setDisplaySlaveCrudListener(crudListener::displaySlaveCrud);
     }
 
+    @Override
+    public void setDisplaySlaveCrudListener(DisplaySlaveCrudListener<T> newDisplaySlaveCrudListener) {
+        this.displaySlaveCrudListener = newDisplaySlaveCrudListener;
+    }
 }

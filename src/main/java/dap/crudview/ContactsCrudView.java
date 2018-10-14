@@ -100,4 +100,10 @@ public class ContactsCrudView extends VerticalLayout implements View, CrudListen
         return ContactsRepository.findAll();
     }
 
+    @Override
+    public Contacts displaySlaveCrud(Contacts contacts)
+    {
+        return null;
+
+    }
 }

@@ -11,10 +11,19 @@ import java.util.Objects;
 @Entity
 @Table(name = "FORMULAIRE_RESULTAT", schema = "PUBLIC", catalog = "H2")
 public class FormulaireResultat {
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
+    @Basic
+    @Column(name = "DATE_CREATION", nullable = true)
     private Date dateCreation;
+
+    @Basic
+    @Column(name = "TEAM_ID", nullable = true)
     private long idTeam;
-    //private long idFormulaire;
+
+    @ManyToOne
     private Formulaire formulaire;
 
     public String libelleComplet()
@@ -49,9 +58,7 @@ public class FormulaireResultat {
         dateCreation = new Date(d1.getTime());
     }
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue
+
     public int getId() {
         return id;
     }
@@ -60,8 +67,7 @@ public class FormulaireResultat {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "DATE_CREATION", nullable = true)
+
     public Date getDateCreation() {
         return dateCreation;
     }
@@ -70,8 +76,7 @@ public class FormulaireResultat {
         this.dateCreation = dateCreation;
     }
 
-    @Basic
-    @Column(name = "TEAM_ID", nullable = true)
+
     public long getIdTeam() {
         return idTeam;
     }

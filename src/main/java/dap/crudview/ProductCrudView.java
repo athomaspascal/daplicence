@@ -104,4 +104,10 @@ public class ProductCrudView extends VerticalLayout implements View, CrudListene
         return ProductRepository.findAll();
     }
 
+    @Override
+    public Product displaySlaveCrud(Product product)
+    {
+        return null;
+    }
+
 }

@@ -2,6 +2,7 @@ package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
+import com.vaadin.shared.ui.grid.HeightMode;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import dap.entities.formulaire.Formulaire;
@@ -12,15 +13,18 @@ import generic.crud.CrudOperation;
 import generic.crud.impl.GridCrud;
 import generic.crudform.impl.form.factory.GridLayoutCrudFormFactory;
 import generic.layout.impl.HorizontalSplitCrudLayout;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Collection;
 
 @Theme("mytheme")
 public class FormulaireCrudView extends VerticalLayout implements View, CrudListener<Formulaire> {
-
+    static Logger logger = LogManager.getLogger("elastic-generator");
 
     private TabSheet tabSheet = new TabSheet();
     FormulaireQuestionCrudView q;
+    FormulaireQuestionCrudView old;
     View parent;
 
     public FormulaireCrudView(FormulaireQuestionCrudView fc, View theParent)
@@ -45,14 +49,11 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
         tabSheet.addTab(layout, caption);
     }
 
-    private Crud getDefaultCrud() {
-        return new GridCrud<>(Formulaire.class, this);
-    }
 
-  
     private Crud getConfiguredCrud() {
         GridCrud<Formulaire> crud = new GridCrud<>(Formulaire.class, new HorizontalSplitCrudLayout());
         crud.setCrudListener(this);
+        crud.getGrid().setHeightMode(HeightMode.UNDEFINED);
 
         GridLayoutCrudFormFactory<Formulaire> formFactory = new GridLayoutCrudFormFactory<>(Formulaire.class, 2, 2);
         crud.setCrudFormFactory(formFactory);
@@ -101,8 +102,18 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
     }
 
     @Override
-    public void displaySlaveCrud()
+    public Formulaire displaySlaveCrud(Formulaire formulaire)
     {
+        logger.info("displaySlaveCrud:" + formulaire.getId());
+        int idFormulaire = (int) formulaire.getId();
 
+        FormulaireQuestionCrudView newQuestion = new FormulaireQuestionCrudView(idFormulaire);
+        if (old != null)
+            this.replaceComponent(old,newQuestion);
+        else addComponent(newQuestion);
+        old = newQuestion;
+        return null;
     }
+
+
 }

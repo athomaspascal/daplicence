@@ -138,6 +138,7 @@ public class GridCrud<T> extends AbstractCrud<T> {
 
         if (domainObject != null) {
             logger.info("gridSelectionChanged:buildNewForm" );
+            displaySlaveCrudListener.perform(domainObject);
             Component form = crudFormFactory.buildNewForm(CrudOperation.READ, domainObject, true, null, event -> {
                 grid.asSingleSelect().clear();
             });
