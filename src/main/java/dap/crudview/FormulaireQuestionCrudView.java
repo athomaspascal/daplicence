@@ -4,20 +4,25 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.ItemCaptionGenerator;
 import com.vaadin.ui.TabSheet;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.TextRenderer;
+import dap.entities.formulaire.FormulaireParameter;
+import dap.entities.formulaire.FormulaireParameterRepository;
 import dap.entities.formulaire.FormulaireQuestion;
 import dap.entities.formulaire.FormulaireQuestionRepository;
 import generic.crud.Crud;
 import generic.crud.CrudListener;
 import generic.crud.CrudOperation;
 import generic.crud.impl.GridCrud;
+import generic.crudform.impl.field.provider.ComboBoxProvider;
 import generic.crudform.impl.field.provider.RadioButtonGroupProvider;
-import generic.crudform.impl.form.factory.GridLayoutCrudFormFactory;
+import generic.crudform.impl.form.factory.GridLayoutCrudCSSFormFactory;
 import generic.layout.impl.HorizontalSplitCrudLayout;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Hashtable;
 import java.util.List;
 
 @Theme("mytheme")
@@ -50,7 +55,7 @@ public class FormulaireQuestionCrudView extends VerticalLayout implements View, 
         GridCrud<FormulaireQuestion> crud = new GridCrud<>(FormulaireQuestion.class, new HorizontalSplitCrudLayout());
         crud.setCrudListener(this);
 
-        GridLayoutCrudFormFactory<FormulaireQuestion> formFactory = new GridLayoutCrudFormFactory<>(FormulaireQuestion.class, 2, 2);
+        GridLayoutCrudCSSFormFactory<FormulaireQuestion> formFactory = new GridLayoutCrudCSSFormFactory<>(FormulaireQuestion.class, 2, 2);
         crud.setCrudFormFactory(formFactory);
 
         formFactory.setUseBeanValidation(true);
@@ -72,9 +77,33 @@ public class FormulaireQuestionCrudView extends VerticalLayout implements View, 
         formFactory.setVisibleProperties(CrudOperation.UPDATE, "questionOrder","codeParameter","libelleField","descriptionField","flagObligatoire","typeField","largeur");
         formFactory.setVisibleProperties(CrudOperation.DELETE, "questionOrder","codeParameter","libelleField","descriptionField","flagObligatoire","typeField","largeur");
         RadioButtonGroupProvider<String> rg = new RadioButtonGroupProvider<String>("Mandatory",flag,getIg());
+
         crud.getCrudFormFactory().setFieldProvider("flagObligatoire",rg);
+        crud.getCrudFormFactory().setFieldProvider("codeParameter",
+                new ComboBoxProvider<>("Codes Parametre",
+                        FormulaireParameterRepository.findAll(), FormulaireParameter::getLibelle));
+                formFactory.setButtonCaption(CrudOperation.ADD, "Add new Question");
+        List<String> listTypes = new ArrayList<String>();
+        listTypes.add(" ");
+        listTypes.add("TEXT");
+        listTypes.add("TEXTAREA");
+
+        crud.getCrudFormFactory().setFieldProvider("typeField",
+                new RadioButtonGroupProvider<>("Field Text Type",
+                        listTypes));
         formFactory.setButtonCaption(CrudOperation.ADD, "Add new Question");
         formFactory.setFieldCaptions("Order No","Parameter", "Question","Description","Mandatory","Type of Text","Width");
+        //Hashtable<String><Integer> listWidth = new Hashtable<String><Integer>();
+
+
+        Hashtable<String, Integer> listWidth = new Hashtable<>();
+        listWidth.put("libelleField",300);
+        listWidth.put("largeur",50);
+        listWidth.put("descriptionField",300);
+        listWidth.put("questionOrder",50);
+
+        formFactory.setFieldWidth(CrudOperation.UPDATE, listWidth);
+        formFactory.setFieldType("descriptionField", TextArea.class);
         crud.setRowCountCaption("%d Question(s) found");
 
         crud.setClickRowToUpdate(true);

@@ -6,6 +6,7 @@ import com.vaadin.ui.Component;
 import generic.crud.CrudOperation;
 
 import java.io.Serializable;
+import java.util.Hashtable;
 import java.util.function.Consumer;
 
 /**
@@ -26,6 +27,10 @@ public interface CrudFormFactory<T> extends Serializable {
     void setFieldCaptions(CrudOperation operation, String... captions);
 
     void setFieldCaptions(String... captions);
+
+    void setFieldWidth(CrudOperation operation, Hashtable<String, Integer> hash);
+
+    void setFieldWidth(Hashtable<String, Integer> hash);
 
     void setFieldType(CrudOperation operation, String property, Class<? extends HasValue> type);
 

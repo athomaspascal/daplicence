@@ -5,6 +5,7 @@ import generic.crud.CrudOperation;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -46,6 +47,19 @@ public abstract class AbstractCrudFormFactory<T> implements CrudFormFactory<T> {
     public void setFieldCaptions(String... captions) {
         Arrays.stream(CrudOperation.values()).forEach(operation -> setFieldCaptions(operation, captions));
     }
+
+    @Override
+    public void setFieldWidth(CrudOperation operation, Hashtable<String, Integer> hash) {
+        getConfiguration(operation).setFieldWidth(hash);
+    }
+
+
+    @Override
+    public void setFieldWidth(Hashtable<String,Integer> hash) {
+        Arrays.stream(CrudOperation.values()).forEach(operation -> setFieldWidth(operation, hash));
+
+    }
+
 
     @Override
     public void setFieldType(CrudOperation operation, String property, Class<? extends HasValue> type) {

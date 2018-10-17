@@ -14268,3 +14268,1157 @@ field:descriptionField caption:Description
 field:flagObligatoire caption:Mandatory
 field:typeField caption:Type of Text
 field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:33
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+show form:true
+gridSelectionChanged:hideform
+show form:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+show form:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+show form:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+show form:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+field:codeParameter caption:Parameter
+field:libelleField caption:Question
+field:descriptionField caption:Description
+field:flagObligatoire caption:Mandatory
+field:typeField caption:Type of Text
+field:largeur caption:Width
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+field:codeParameter caption:Order No
+field:descriptionField caption:Parameter
+field:flagObligatoire caption:Question
+field:id caption:Description
+field:idFormulaire caption:Mandatory
+field:largeur caption:Type of Text
+field:libelleField caption:Width
+field:questionOrder caption:not set
+field:typeField caption:not set
+gridSelectionChanged:true
+field:questionOrder caption:Order No
+LARGEUR:300
+field:codeParameter caption:Parameter
+LARGEUR:300
+field:libelleField caption:Question
+LARGEUR:300
+field:descriptionField caption:Description
+LARGEUR:300
+field:flagObligatoire caption:Mandatory
+LARGEUR:300
+field:typeField caption:Type of Text
+LARGEUR:300
+field:largeur caption:Width
+LARGEUR:300
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+gridSelectionChanged:true
+LARGEUR:300
+LARGEUR:300
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+gridSelectionChanged:true
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+Field:libelleField LARGEUR:300
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+gridSelectionChanged:true
+questionOrder Field:libelleField LARGEUR:300
+codeParameter Field:libelleField LARGEUR:300
+libelleField Field:libelleField LARGEUR:300
+descriptionField Field:libelleField LARGEUR:300
+flagObligatoire Field:libelleField LARGEUR:300
+typeField Field:libelleField LARGEUR:300
+largeur Field:libelleField LARGEUR:300
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+gridSelectionChanged:true
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:20
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:20
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+show form:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:0
+field:codeParameter largeur:0
+field:libelleField largeur:20
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:20
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:33
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:300
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+gridSelectionChanged:hideform
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+hide form
+performclickEvent:true
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+gridSelectionChanged:hideform
+gridSelectionChanged:buildNewForm
+displaySlaveCrud:1
+field:dateCreation largeur:0
+field:id largeur:0
+field:libelleFormulaire largeur:0
+gridSelectionChanged:true
+field:libelleFormulaire largeur:0
+field:dateCreation largeur:0
+gridSelectionChanged:buildNewForm
+field:codeParameter largeur:0
+field:descriptionField largeur:0
+field:flagObligatoire largeur:0
+field:id largeur:0
+field:idFormulaire largeur:0
+field:largeur largeur:0
+field:libelleField largeur:0
+field:questionOrder largeur:0
+field:typeField largeur:0
+gridSelectionChanged:true
+field:questionOrder largeur:50
+field:codeParameter largeur:0
+field:libelleField largeur:300
+field:descriptionField largeur:300
+field:flagObligatoire largeur:0
+field:typeField largeur:0
+field:largeur largeur:50
+flag:false
+flag:true
+flag:false
+flag:true
+flag:false
+flag:true
+On retire les composants
+flag:false
+flag:true
+On retire les composants
+On retire les composants
+flag:false
+flag:true
+On retire les composants
+On retire les composants
+flag:false
+flag:true
+On retire les composants
+flag:false
+flag:true
+On retire les composants
+flag:true
+On retire les composants
+flag:false
+flag:true
+On retire les composants
+flag:true
+On retire les composants
+flag:true
+On retire les composants
+flag:true
+On retire les composants
+flag:true
+On retire les composants
+flag:false

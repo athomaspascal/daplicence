@@ -7,6 +7,8 @@ import dap.entities.JPAService;
 import dap.entities.formulaire.*;
 import dap.entities.team.Team;
 import dap.entities.team.TeamRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Theme("mytheme")
 public class FormulaireChoice extends VerticalLayout implements View{
-
+    static Logger logger = LogManager.getLogger("elastic-generator");
     List<TextField> listTextField = new ArrayList();
     List<TextArea> listTextArea = new ArrayList();
     List<ComboBox> listComboBox = new ArrayList();
@@ -24,6 +26,11 @@ public class FormulaireChoice extends VerticalLayout implements View{
     Formulaire formulaireSelected;
     List<String> typeQuestion = new ArrayList<String>();
     List<Integer> numQuestion = new ArrayList<Integer>();
+    boolean formulaireDisplayed = false;
+    Button OK = new Button("Save",this::ok);
+    Button Cancel = new Button("Cancel");
+    FormLayout formulaire = new FormLayout();
+    HorizontalLayout footer = new HorizontalLayout();
 
     public FormulaireChoice() {
         JPAService.init();
@@ -41,13 +48,12 @@ public class FormulaireChoice extends VerticalLayout implements View{
         teamComboBox.addValueChangeListener(event -> {
             teamSelected = teamComboBox.getValue();
             Window window = new Window();
-            VerticalLayout v = new VerticalLayout();
+            FormLayout v = new FormLayout();
             List<FormulaireResultat> res= FormulaireResultatRepository.findAll(teamSelected.getId());
             FormulaireResultat r = new FormulaireResultat();
 
             if (res.size()> 0)
             {
-
                 Label Titre = new Label("FORMULAIRES EN COURS POUR CETTE TEAM");
                 Titre.setStyleName("titrewindow");
                 FormLayout f = new FormLayout();
@@ -63,6 +69,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
                 h.addComponents(updateFormulaire,newFormulaire);
                 f.addComponents(formulaireList,h);
+
                 v.addComponents(Titre,f);
                 window.setContent(v);
                 window.center();
@@ -81,15 +88,50 @@ public class FormulaireChoice extends VerticalLayout implements View{
         formulaireComboBox.setItemCaptionGenerator(Formulaire::getLibelleFormulaire);
         formulaireComboBox.setEmptySelectionAllowed(false);
 
-        VerticalLayout formulaire = new VerticalLayout();
-        formulaireComboBox.addValueChangeListener(event -> {
-            formulaireSelected = formulaireComboBox.getValue();
-            buildFormulaire(formulaireSelected.getLibelleFormulaire(),formulaire);
-            addComponent(formulaire);
-        });
+
+
+
 
         // On ajoute les 2 combobox
-        addComponents(teamComboBox,formulaireComboBox);
+        FormLayout form = new FormLayout();
+        Button saisie = new Button("Saisie du formulaire");
+        saisie.addClickListener(event -> {
+            logger.info("flag:" + formulaireDisplayed);
+            if (this.formulaireDisplayed)
+            {
+                logger.info("On retire les composants");
+                removeComponent(this.formulaire);
+                removeComponent(this.footer);
+
+            }
+
+            formulaireSelected = formulaireComboBox.getValue();
+            formulaire = new FormLayout();
+            buildFormulaire(formulaireSelected.getLibelleFormulaire(),formulaire);
+
+
+
+            OK.addClickListener(eventc -> {
+                ok(eventc);
+                this.removeComponent(formulaire);
+                this.removeComponent(footer);
+                formulaireDisplayed= false;
+            });
+
+
+            Cancel.addClickListener(eventb -> {
+                this.removeComponent(formulaire);
+                this.removeComponent(footer);
+                formulaireDisplayed= false;
+
+            });
+
+            footer.addComponents(OK,Cancel);
+            addComponents(formulaire,footer);
+            formulaireDisplayed= true;
+        });
+        form.addComponents(teamComboBox,formulaireComboBox,saisie);
+        addComponents(form);
 
         //On fabrique le formulaire
         Label liste = new Label("Liste des questions");
@@ -100,13 +142,12 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
     }
 
-    private void buildFormulaire(String formulaire, VerticalLayout monlayout) {
-        //VerticalLayout monlayout= new VerticalLayout();
+    private void buildFormulaire(String formulaire, FormLayout monlayout) {
         List <FormulaireQuestion> listF = FormulaireQuestionRepository.findAllByFormulaire(formulaire);
         listF.forEach(formulaireQuestion ->{
             String codeParameter = formulaireQuestion.getCodeParameter();
             if ( codeParameter == null || codeParameter.equalsIgnoreCase("")) {
-                if (formulaireQuestion.getTypeField() == null || formulaireQuestion.getTypeField().equalsIgnoreCase(""))
+                if (formulaireQuestion.getTypeField() == null || !formulaireQuestion.getTypeField().equalsIgnoreCase("TEXTAREA"))
                 {
                     TextField textField = new TextField(formulaireQuestion.getLibelleField());
                     textField.addStyleName("inline-label");
@@ -179,21 +220,14 @@ public class FormulaireChoice extends VerticalLayout implements View{
             }
         });
 
-        HorizontalLayout h = new HorizontalLayout();
 
-        Button OK = new Button("Save",this::ok);
-
-        Button Cancel = new Button("Cancel");
-        h.addComponents(OK,Cancel);
-        monlayout.addComponents(h);
-        OK.focus();
 
     }
 
     public void ok(Button.ClickEvent e)
     {
         Window window = new Window("Ecriture du formulaire");
-        VerticalLayout v = new VerticalLayout();
+        FormLayout v = new FormLayout();
         Label l1 = new Label("Team:" + teamSelected.getNomteam());
         Label l2 = new Label("Formulaire:" + formulaireSelected.getLibelleFormulaire());
         v.addComponents(l1,l2);

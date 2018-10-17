@@ -3,10 +3,7 @@ package generic.crudform;
 import com.vaadin.data.HasValue;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class CrudFormConfiguration implements Serializable {
@@ -18,7 +15,11 @@ public class CrudFormConfiguration implements Serializable {
     protected Map<Object, FieldCreationListener> fieldCreationListeners = new HashMap<>();
     protected Map<Object, FieldProvider> fieldProviders = new HashMap<>();
     protected boolean useBeanValidation;
+    protected Hashtable<String,Integer > hashTableWidth = new Hashtable<>();
 
+    public Hashtable<String, Integer> getHashTableWidth() {
+        return hashTableWidth;
+    }
     public List<String> getVisibleProperties() {
         return visibleProperties;
     }
@@ -38,6 +39,8 @@ public class CrudFormConfiguration implements Serializable {
     public List<String> getFieldCaptions() {
         return fieldCaptions;
     }
+
+
 
     public void setFieldCaptions(List<String> fieldCaptions) {
         this.fieldCaptions = fieldCaptions;
@@ -73,5 +76,10 @@ public class CrudFormConfiguration implements Serializable {
 
     public void setUseBeanValidation(boolean useBeanValidation) {
         this.useBeanValidation = useBeanValidation;
+    }
+
+    public void setFieldWidth(Hashtable<String,Integer > hash)
+    {
+        hashTableWidth = hash;
     }
 }

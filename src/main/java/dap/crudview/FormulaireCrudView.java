@@ -3,6 +3,7 @@ package dap.crudview;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
 import com.vaadin.shared.ui.grid.HeightMode;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import dap.entities.formulaire.Formulaire;
@@ -38,8 +39,9 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
     public FormulaireCrudView() {
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All Formulaire");
-
-        addComponent(tabSheet);
+        Label titre = new Label("Formulaire Configuration");
+        titre.setStyleName("titre");
+        addComponents(titre,tabSheet);
     }
 
     private void addCrud(Crud crud, String caption) {
