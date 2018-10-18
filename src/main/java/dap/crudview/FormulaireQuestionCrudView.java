@@ -103,6 +103,7 @@ public class FormulaireQuestionCrudView extends VerticalLayout implements View, 
         listWidth.put("questionOrder",50);
 
         formFactory.setFieldWidth(CrudOperation.UPDATE, listWidth);
+        formFactory.setFieldWidth(CrudOperation.ADD, listWidth);
         formFactory.setFieldType("descriptionField", TextArea.class);
         crud.setRowCountCaption("%d Question(s) found");
 

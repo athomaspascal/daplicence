@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Theme("mytheme")
 public class FormulaireChoice extends VerticalLayout implements View{
@@ -64,7 +65,22 @@ public class FormulaireChoice extends VerticalLayout implements View{
                 formulaireList.setWidth("300");
                 formulaireList.setItemCaptionGenerator(FormulaireResultat::libelleComplet);
                 Button updateFormulaire = new Button("Update");
+                updateFormulaire.addClickListener(eventUpdate->{
+
+                    Set<FormulaireResultat> selectedItems = formulaireList.getSelectedItems();
+                    for(FormulaireResultat formulaireSel :selectedItems )
+                    {
+                        displayFormulaire(formulaireSel.getFormulaire().getLibelleFormulaire(), formulaireSel.getId());
+                        window.close();
+                    }
+
+
+                });
                 Button newFormulaire = new Button("New FORM");
+                newFormulaire.addClickListener(eventNew->{
+
+                    window.close();
+                });
                 HorizontalLayout h = new HorizontalLayout();
 
                 h.addComponents(updateFormulaire,newFormulaire);
@@ -96,39 +112,8 @@ public class FormulaireChoice extends VerticalLayout implements View{
         FormLayout form = new FormLayout();
         Button saisie = new Button("Saisie du formulaire");
         saisie.addClickListener(event -> {
-            logger.info("flag:" + formulaireDisplayed);
-            if (this.formulaireDisplayed)
-            {
-                logger.info("On retire les composants");
-                removeComponent(this.formulaire);
-                removeComponent(this.footer);
-
-            }
-
             formulaireSelected = formulaireComboBox.getValue();
-            formulaire = new FormLayout();
-            buildFormulaire(formulaireSelected.getLibelleFormulaire(),formulaire);
-
-
-
-            OK.addClickListener(eventc -> {
-                ok(eventc);
-                this.removeComponent(formulaire);
-                this.removeComponent(footer);
-                formulaireDisplayed= false;
-            });
-
-
-            Cancel.addClickListener(eventb -> {
-                this.removeComponent(formulaire);
-                this.removeComponent(footer);
-                formulaireDisplayed= false;
-
-            });
-
-            footer.addComponents(OK,Cancel);
-            addComponents(formulaire,footer);
-            formulaireDisplayed= true;
+            displayFormulaire(formulaireSelected.getLibelleFormulaire(),-1);
         });
         form.addComponents(teamComboBox,formulaireComboBox,saisie);
         addComponents(form);
@@ -142,7 +127,40 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
     }
 
-    private void buildFormulaire(String formulaire, FormLayout monlayout) {
+    private void displayFormulaire(String libelleFormulaire,int idFormulaire) {
+        logger.info("flag:" + formulaireDisplayed);
+        if (this.formulaireDisplayed)
+        {
+            logger.info("On retire les composants");
+            removeComponent(this.formulaire);
+            removeComponent(this.footer);
+
+        };
+
+        formulaire = new FormLayout();
+        buildFormulaire(libelleFormulaire,formulaire,idFormulaire);
+
+        OK.addClickListener(eventc -> {
+            ok(eventc);
+            this.removeComponent(formulaire);
+            this.removeComponent(footer);
+            formulaireDisplayed= false;
+        });
+
+
+        Cancel.addClickListener(eventb -> {
+            this.removeComponent(formulaire);
+            this.removeComponent(footer);
+            formulaireDisplayed= false;
+
+        });
+
+        footer.addComponents(OK,Cancel);
+        addComponents(formulaire,footer);
+        formulaireDisplayed= true;
+    }
+
+    private void buildFormulaire(String formulaire, FormLayout monlayout,int idFormulaire) {
         List <FormulaireQuestion> listF = FormulaireQuestionRepository.findAllByFormulaire(formulaire);
         listF.forEach(formulaireQuestion ->{
             String codeParameter = formulaireQuestion.getCodeParameter();
