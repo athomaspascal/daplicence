@@ -87,21 +87,32 @@ public class ElasticClient {
 
     public void indexDocument(String index, String type, String json)
     {
-        System.out.println("Index:"+index);
-        IndexResponse response = client.prepareIndex(index, type)
-                .setSource(json, XContentType.JSON)
-                .get();
+        logger.info("Lecture Index:"+index);
+        try {
+            IndexResponse response = client.prepareIndex(index, type)
+                    .setSource(json, XContentType.JSON)
+                    .get();
+            String _index = response.getIndex();
+            String _type = response.getType();
+            String _id = response.getId();
+            long _version = response.getVersion();
+            RestStatus status = response.status();
+            logger.info("  _index=" + _index);
+            logger.info("   _type=" + _type);
+            logger.info("     _id=" + _id);
+            logger.info("_version=" + _version);
+            logger.info("  status=" + status.getStatus());
 
-        String _index = response.getIndex();
-        String _type = response.getType();
-        String _id = response.getId();
-        long _version = response.getVersion();
-        RestStatus status = response.status();
-        System.out.println("  _index=" + _index);
-        System.out.println("   _type=" + _type);
-        System.out.println("     _id=" + _id);
-        System.out.println("_version=" + _version);
-        System.out.println("  status=" + status.getStatus());
+        }
+        catch (Exception e)
+        {
+            logger.error("Index document Error index:" + index);
+            logger.error(e.getMessage());
+            logger.error(e.getStackTrace());
+        }
+
+
+
 
 
     }
@@ -121,11 +132,26 @@ public class ElasticClient {
         try {
             elasticClient = new ElasticClient();
 
-            templateJson=GenerateAndIndex.setArg("templateJson");
-            indexName=GenerateAndIndex.setArg("indexName");
-            indexType=GenerateAndIndex.setArg("indexType");
-            elasticClient.connectElastic(indexName,indexType);
-            elasticClient.indexDocument("{" + document +"}");
+            if (elasticClient != null)
+            {
+                templateJson=GenerateAndIndex.setArg("templateJson");
+                indexName=GenerateAndIndex.setArg("indexName");
+                indexType=GenerateAndIndex.setArg("indexType");
+                elasticClient.connectElastic(indexName,indexType);
+                if (elasticClient.client != null)
+                {
+                    elasticClient.indexDocument("{" + document +"}");
+                }
+                else
+                    logger.error("Elastic client Indexation non disponible");
+
+
+            }
+            else
+            {
+                logger.error("Elastic client  non disponible");
+
+            }
 
 
         } catch (IOException e) {

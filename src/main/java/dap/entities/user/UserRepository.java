@@ -59,6 +59,12 @@ public class UserRepository {
         );
     }
 
+    public static User add(User user) {
+        User newUser = new User();
+
+        return JPAService.runInTransaction(em -> em.merge(newUser));
+    }
+
     public static void delete(User user) {
         JPAService.runInTransaction(em -> {
             em.remove(getById(user.getId(), em));

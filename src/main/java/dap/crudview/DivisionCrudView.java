@@ -28,7 +28,7 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All Division");
         t = tt;
-        addComponent(tabSheet);
+        addComponent(getConfiguredCrud());
     }
 
     private void addCrud(Crud crud, String caption) {
@@ -50,6 +50,7 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
         GridLayoutCrudFormFactory<Division> formFactory = new GridLayoutCrudFormFactory<>(Division.class, 2, 2);
         crud.setCrudFormFactory(formFactory);
 
+
         formFactory.setUseBeanValidation(true);
 
         //formFactory.setErrorListener(e -> Notification.show("Custom error message (simulated error)", Notification.Type.ERROR_MESSAGE));
@@ -60,7 +61,9 @@ public class DivisionCrudView extends VerticalLayout implements CrudListener<Div
 
         formFactory.setDisabledProperties("id");
 
+
         crud.getGrid().setColumns("nameDivision","description");
+        crud.getGrid().getColumn("nameDivision").setCaption("Division");
 
         formFactory.setButtonCaption(CrudOperation.ADD, "Add new division");
         crud.setRowCountCaption("%d division(s) found");

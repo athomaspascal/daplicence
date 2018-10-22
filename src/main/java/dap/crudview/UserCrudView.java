@@ -71,22 +71,27 @@ public class UserCrudView extends VerticalLayout implements View, CrudListenerWi
         crud.setFilter(filtre);
         crud.setCrudListener(this);
 
+
         GridLayoutCrudFormFactory<User> formFactory = new GridLayoutCrudFormFactory<>(User.class, 2, 2);
         crud.setCrudFormFactory(formFactory);
+
 
         formFactory.setUseBeanValidation(true);
 
         //formFactory.setErrorListener(e -> Notification.show("Custom error message (simulated error)", Notification.Type.ERROR_MESSAGE));
 
-        formFactory.setVisibleProperties(CrudOperation.ADD, "nom", "dateCreation", "email", "matricule","teamid", "products","environnements", "password", "mainProduct", "active");
+        formFactory.setVisibleProperties(CrudOperation.ADD, "nom", "dateCreation", "gender","email", "matricule","teamid", "products","environnements", "password", "mainProduct", "active");
         formFactory.setVisibleProperties(CrudOperation.UPDATE, "id", "nom", "dateCreation", "gender","email", "matricule", "teamid","password", "products","environnements", "active", "mainProduct");
         formFactory.setVisibleProperties(CrudOperation.DELETE, "nom", "email", "matricule");
 
         formFactory.setDisabledProperties("id");
 
         crud.getGrid().setColumns("nom", "dateCreation", "email", "matricule", "teamid", "mainProduct", "active");
+        crud.getGrid().getColumn("nom").setCaption("User Name");
+        crud.getGrid().getColumn("teamid").setCaption("Team");
+        crud.getGrid().getColumn("dateCreation").setCaption("Date");
         crud.getGrid().getColumn("mainProduct").setRenderer(product -> product == null ? "" : ((Product) product).getName(), new TextRenderer());
-        crud.getGrid().getColumn("teamid").setRenderer(group -> group == null ? "" : ((Team) group).getNomteam(), new TextRenderer());
+        crud.getGrid().getColumn("teamid").setRenderer(team -> team == null ? "" : ((Team) team).getNomteam(), new TextRenderer());
         crud.getGrid().setHeightMode(HeightMode.UNDEFINED);
 
         ((Grid.Column<User, Date>) crud.getGrid().getColumn("dateCreation")).setRenderer(new DateRenderer("%1$tY-%1$tm-%1$te"));

@@ -51,6 +51,17 @@ public class FormulaireReponseRepository {
         return (FormulaireReponse) query.getResultList().stream().findFirst().orElse(null);
     }
 
+    public static FormulaireReponse getByIdAndNumQuestion(int id, int numQ,EntityManager em) {
+        Query query = em.createQuery("select u " +
+                "from FormulaireReponse u " +
+                "where u.id=:id " +
+                "and u.idQuestion = :numQ");
+        query.setParameter("id", id);
+        query.setParameter("numQ", numQ);
+
+        return (FormulaireReponse) query.getResultList().stream().findFirst().orElse(null);
+    }
+
     public static List<String> listAllFormulaireReponse( EntityManager em) {
         Query query = em.createQuery("select distinct name from FormulaireReponse u");
         List<String> listeDesFormulaireReponse = query.getResultList();

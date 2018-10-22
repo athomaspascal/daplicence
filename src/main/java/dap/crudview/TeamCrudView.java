@@ -28,9 +28,11 @@ public class TeamCrudView extends VerticalLayout implements View, CrudListener<T
 
 
     public TeamCrudView() {
+        /*
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All Teams");
-        addComponent(tabSheet);
+        */
+        addComponent(getConfiguredCrud());
 
 
     }
@@ -50,6 +52,7 @@ public class TeamCrudView extends VerticalLayout implements View, CrudListener<T
     private Crud getConfiguredCrud() {
         GridCrud<Team> crud = new GridCrud<>(Team.class, new HorizontalSplitCrudLayout());
         crud.setCrudListener(this);
+        crud.getGrid().addStyleName("border-grid");
 
         GridLayoutCrudFormFactory<Team> formFactory = new GridLayoutCrudFormFactory<>(Team.class, 2, 2);
         crud.setCrudFormFactory(formFactory);
@@ -66,8 +69,11 @@ public class TeamCrudView extends VerticalLayout implements View, CrudListener<T
 
         crud.getGrid().setColumns("nomteam","userDivision","teamBossName","teamBossEmail");
         crud.getGrid().getColumn("userDivision").setRenderer(userDivision -> userDivision == null ? "" : ((Division) userDivision).getNameDivision(), new TextRenderer());
+        crud.getGrid().getColumn("userDivision").setCaption("Division");
+        crud.getGrid().getColumn("nomteam").setCaption("Team Name");
         formFactory.setFieldProvider("userDivision", new ComboBoxProvider<>("Enterprise Division", DivisionRepository.findAll(), Division::getNameDivision));
         formFactory.setButtonCaption(CrudOperation.ADD, "Add new team");
+        formFactory.setFieldCaptions("Team nam","Division","Boss Name","Boss EMAIL");
         crud.setRowCountCaption("%d team(s) found");
 
         crud.setClickRowToUpdate(true);

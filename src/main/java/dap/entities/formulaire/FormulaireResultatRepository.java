@@ -59,6 +59,7 @@ public class FormulaireResultatRepository {
         return (FormulaireResultat) query.getResultList().stream().findFirst().orElse(null);
     }
 
+
     public static List<String> listAllFormulaire( EntityManager em) {
         Query query = em.createQuery("select distinct name from FormulaireResultat u");
         List<String> listeDesFormulaire = query.getResultList();

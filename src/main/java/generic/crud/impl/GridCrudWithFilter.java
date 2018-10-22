@@ -229,6 +229,8 @@ public class GridCrudWithFilter<T> extends AbstractCrudWithFilter<T> {
                 cancelClickEvent -> {
                     if (clickRowToUpdate) {
                         grid.asSingleSelect().clear();
+                        // modif 11/10/2018
+                        crudLayout.hideForm();
                     } else {
                         T selected = grid.asSingleSelect().getValue();
                         crudLayout.hideForm();

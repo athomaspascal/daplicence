@@ -18,6 +18,7 @@ import java.util.Set;
 @Theme("mytheme")
 public class FormulaireChoice extends VerticalLayout implements View{
     static Logger logger = LogManager.getLogger("elastic-generator");
+    private int idFormulaireResultatSelected;
     List<TextField> listTextField = new ArrayList();
     List<TextArea> listTextArea = new ArrayList();
     List<ComboBox> listComboBox = new ArrayList();
@@ -28,7 +29,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
     List<String> typeQuestion = new ArrayList<String>();
     List<Integer> numQuestion = new ArrayList<Integer>();
     boolean formulaireDisplayed = false;
-    Button OK = new Button("Save",this::ok);
+    Button save = new Button("Save",this::save);
     Button Cancel = new Button("Cancel");
     FormLayout formulaire = new FormLayout();
     HorizontalLayout footer = new HorizontalLayout();
@@ -70,7 +71,9 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     Set<FormulaireResultat> selectedItems = formulaireList.getSelectedItems();
                     for(FormulaireResultat formulaireSel :selectedItems )
                     {
-                        displayFormulaire(formulaireSel.getFormulaire().getLibelleFormulaire(), formulaireSel.getId());
+                        this.idFormulaireResultatSelected=formulaireSel.getId();
+                        displayFormulaire(formulaireSel.getFormulaire().getLibelleFormulaire() );
+                        formulaireSelected = formulaireSel.getFormulaire();
                         window.close();
                     }
 
@@ -113,7 +116,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
         Button saisie = new Button("Saisie du formulaire");
         saisie.addClickListener(event -> {
             formulaireSelected = formulaireComboBox.getValue();
-            displayFormulaire(formulaireSelected.getLibelleFormulaire(),-1);
+            displayFormulaire(formulaireSelected.getLibelleFormulaire());
         });
         form.addComponents(teamComboBox,formulaireComboBox,saisie);
         addComponents(form);
@@ -127,7 +130,7 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
     }
 
-    private void displayFormulaire(String libelleFormulaire,int idFormulaire) {
+    private void displayFormulaire(String libelleFormulaire) {
         logger.info("flag:" + formulaireDisplayed);
         if (this.formulaireDisplayed)
         {
@@ -138,10 +141,10 @@ public class FormulaireChoice extends VerticalLayout implements View{
         };
 
         formulaire = new FormLayout();
-        buildFormulaire(libelleFormulaire,formulaire,idFormulaire);
+        buildFormulaire(libelleFormulaire,formulaire);
 
-        OK.addClickListener(eventc -> {
-            ok(eventc);
+        save.addClickListener(eventc -> {
+            save(eventc);
             this.removeComponent(formulaire);
             this.removeComponent(footer);
             formulaireDisplayed= false;
@@ -155,13 +158,14 @@ public class FormulaireChoice extends VerticalLayout implements View{
 
         });
 
-        footer.addComponents(OK,Cancel);
+        footer.addComponents(save,Cancel);
         addComponents(formulaire,footer);
         formulaireDisplayed= true;
     }
 
-    private void buildFormulaire(String formulaire, FormLayout monlayout,int idFormulaire) {
+    private void buildFormulaire(String formulaire, FormLayout monlayout) {
         List <FormulaireQuestion> listF = FormulaireQuestionRepository.findAllByFormulaire(formulaire);
+        EntityManager em = JPAService.getFactory().createEntityManager();
         listF.forEach(formulaireQuestion ->{
             String codeParameter = formulaireQuestion.getCodeParameter();
             if ( codeParameter == null || codeParameter.equalsIgnoreCase("")) {
@@ -170,6 +174,11 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     TextField textField = new TextField(formulaireQuestion.getLibelleField());
                     textField.addStyleName("inline-label");
                     textField.addStyleName("formulaire");
+                    if (idFormulaireResultatSelected>0) {
+                        FormulaireReponse fr = FormulaireReponseRepository.getByIdAndNumQuestion(idFormulaireResultatSelected,formulaireQuestion.getId(),em);
+                        if (fr != null)
+                            textField.setValue(fr.getReponse());
+                    }
                     if (formulaireQuestion.getLargeur() == null)
                     textField.setWidthUndefined();
                     else
@@ -185,6 +194,11 @@ public class FormulaireChoice extends VerticalLayout implements View{
                         textArea.setWidthUndefined();
                     else
                         textArea.setWidth(formulaireQuestion.getLargeur());
+                    if (idFormulaireResultatSelected>0) {
+                        FormulaireReponse fr = FormulaireReponseRepository.getByIdAndNumQuestion(idFormulaireResultatSelected,formulaireQuestion.getId(),em);
+                        if (fr != null)
+                            textArea.setValue(fr.getReponse());
+                    }
                     listTextArea.add(textArea);
                     typeQuestion.add("TEXTAREA");
                     numQuestion.add(formulaireQuestion.getId());
@@ -194,7 +208,6 @@ public class FormulaireChoice extends VerticalLayout implements View{
             else {
                 JPAService jpa = new JPAService();
                 jpa.init();
-                EntityManager em = jpa.getFactory().createEntityManager();
 
                 FormulaireParameter fp = FormulaireParameterRepository.getById(codeParameter,em);
                 if (fp.getTypeRepresentation().equalsIgnoreCase("COMBOBOX"))
@@ -238,11 +251,14 @@ public class FormulaireChoice extends VerticalLayout implements View{
             }
         });
 
+        if (em != null)
+            em.close();
+
 
 
     }
 
-    public void ok(Button.ClickEvent e)
+    public void save(Button.ClickEvent e)
     {
         Window window = new Window("Ecriture du formulaire");
         FormLayout v = new FormLayout();
@@ -257,10 +273,19 @@ public class FormulaireChoice extends VerticalLayout implements View{
         int nbQuestion=0;
         FormulaireResultat FormRes = new FormulaireResultat(teamSelected.getId(), formulaireSelected.getId());
 
-        FormulaireResultat resultat = FormulaireResultatRepository.add(FormRes);
+        FormulaireResultat resultat ;
+        EntityManager em = JPAService.getFactory().createEntityManager();
+        boolean newRes=false;
+        if( idFormulaireResultatSelected>0)  resultat = FormulaireResultatRepository.getById(idFormulaireResultatSelected,em);
+        else {
+            newRes = true;
+            resultat= FormulaireResultatRepository.add(FormRes);
+        }
+
 
         for(String reponse: typeQuestion) {
-            FormulaireReponse fr = new FormulaireReponse();
+            FormulaireReponse fr ;
+
 
             switch (reponse) {
 
@@ -268,8 +293,17 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     TextField t = listTextField.get(nbTextField);
                     Label ll1 = new Label(numQuestion.get(nbQuestion) + ":" + t.getValue());
                     v.addComponent(ll1);
-                    fr = new FormulaireReponse(resultat.getId(),numQuestion.get(nbQuestion), t.getValue());
-                    FormulaireReponseRepository.add(fr);
+                    if (newRes == false){
+                        fr = new FormulaireReponse(resultat.getId(),numQuestion.get(nbQuestion), t.getValue());
+                        FormulaireReponseRepository.add(fr);
+                    }
+                    else {
+                        fr = FormulaireReponseRepository.getByIdAndNumQuestion(resultat.getId(), numQuestion.get(nbQuestion), em);
+                        fr.setReponse(t.getValue());
+                        FormulaireReponseRepository.save(fr);
+                    }
+
+
                     nbTextField++;
                     nbQuestion++;
 
@@ -278,8 +312,15 @@ public class FormulaireChoice extends VerticalLayout implements View{
                     TextArea t2 = listTextArea.get(nbTextArea);
                     Label ll2 = new Label(numQuestion.get(nbQuestion) + ":" + t2.getValue());
                     v.addComponent(ll2);
-                    fr = new FormulaireReponse(resultat.getId(), numQuestion.get(nbQuestion), t2.getValue());
-                    FormulaireReponseRepository.add(fr);
+                    if (newRes == false){
+                        fr = new FormulaireReponse(resultat.getId(),numQuestion.get(nbQuestion), t2.getValue());
+                        FormulaireReponseRepository.add(fr);
+                    }
+                    else {
+                        fr = FormulaireReponseRepository.getByIdAndNumQuestion(resultat.getId(), numQuestion.get(nbQuestion), em);
+                        fr.setReponse(t2.getValue());
+                        FormulaireReponseRepository.save(fr);
+                    }
                     nbTextArea++;
                     nbQuestion++;
 

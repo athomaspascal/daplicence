@@ -2,6 +2,7 @@ package dap.crudview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.View;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.renderers.TextRenderer;
@@ -28,9 +29,11 @@ public class ContactsCrudView extends VerticalLayout implements View, CrudListen
 
 
     public ContactsCrudView() {
-        tabSheet.setSizeFull();
-        addCrud(getConfiguredCrud(), "All Contacts");
-        addComponent(tabSheet);
+        Label titre = new Label("Contacts");
+        titre.setStyleName("titre");
+        /*tabSheet.setSizeFull();
+        addCrud(getConfiguredCrud(), "All Contacts");*/
+        addComponents(titre,getConfiguredCrud());
 
 
     }

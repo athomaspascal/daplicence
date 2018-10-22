@@ -13,7 +13,6 @@ import generic.crud.CrudListener;
 import generic.crud.CrudOperation;
 import generic.crud.impl.GridCrud;
 import generic.crudform.impl.form.factory.GridLayoutCrudFormFactory;
-import generic.layout.impl.HorizontalSplitCrudLayout;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,25 +36,32 @@ public class FormulaireCrudView extends VerticalLayout implements View, CrudList
 
 
     public FormulaireCrudView() {
-        tabSheet.setSizeFull();
-        addCrud(getConfiguredCrud(), "All Formulaire");
+        //tabSheet.setSizeFull();
+        //addCrud(getConfiguredCrud(), "All Formulaire");
         Label titre = new Label("Formulaire Configuration");
+        VerticalLayout layout = new VerticalLayout(getConfiguredCrud());
+        //layout.setSizeFull();
+        layout.setMargin(true);
+
         titre.setStyleName("titre");
-        addComponents(titre,tabSheet);
+        addComponents(titre,getConfiguredCrud());
     }
 
     private void addCrud(Crud crud, String caption) {
         VerticalLayout layout = new VerticalLayout(crud);
-        layout.setSizeFull();
+        //layout.setSizeFull();
         layout.setMargin(true);
         tabSheet.addTab(layout, caption);
     }
 
 
     private Crud getConfiguredCrud() {
-        GridCrud<Formulaire> crud = new GridCrud<>(Formulaire.class, new HorizontalSplitCrudLayout());
+        GridCrud<Formulaire> crud = new GridCrud<>(Formulaire.class,this);
         crud.setCrudListener(this);
         crud.getGrid().setHeightMode(HeightMode.UNDEFINED);
+        crud.getGrid().setWidthUndefined();
+
+
 
         GridLayoutCrudFormFactory<Formulaire> formFactory = new GridLayoutCrudFormFactory<>(Formulaire.class, 2, 2);
         crud.setCrudFormFactory(formFactory);

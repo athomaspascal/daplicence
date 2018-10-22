@@ -37,7 +37,7 @@ public class FormulaireQuestionCrudView extends VerticalLayout implements View, 
         tabSheet.setSizeFull();
         addCrud(getConfiguredCrud(), "All FormulaireQuestion");
 
-        addComponent(tabSheet);
+        addComponent(getConfiguredCrud());
     }
 
     private void addCrud(Crud crud, String caption) {

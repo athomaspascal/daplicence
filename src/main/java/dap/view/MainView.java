@@ -32,14 +32,16 @@ public class MainView extends HorizontalLayout implements View {
         Image imageProduct = setImage(pathImage+ "Software.png",imageStyle,width,height,"Product");
         Image imageContacts = setImage(pathImage+ "Contacts.png",imageStyle,width,height,"Contacts");
         Image image = setImage(pathImage+ "Users.jpg",imageStyle,width,height,"Licence");
-        Image imageFormulaire = setImage(pathImage+ "formulaire.png",imageStyle,width,height,"Formulaire");
-        Image imageConfigFormulaire = setImage(pathImage+ "configure-formulaire.png",imageStyle,width,height,"Config");
+        Image imageFormulaire = setImage(pathImage+ "formulaire.gif",imageStyle,width,height,"Formulaire");
+        Image imageConfigFormulaire = setImage(pathImage+ "configure-formulaire.jpg",imageStyle,width,height,"Config");
+        Image imageGraph= setImage(pathImage+ "graph.png",imageStyle,width,height,"graph");
 
-        HorizontalLayout h = new HorizontalLayout();
+        HorizontalLayout h = new HorizontalLayout(image,imageTeam,imageProduct);
         HorizontalLayout h2 = new HorizontalLayout(imageContacts,imageFormulaire,imageConfigFormulaire);
-        h.addComponents(image,imageTeam,imageProduct);
+        HorizontalLayout h3 = new HorizontalLayout(imageGraph);
         VerticalLayout v1 = new VerticalLayout();
-        v1.addComponents(titre,h,h2);
+
+        v1.addComponents(titre,h,h2,h3);
         CssLayout v2 = new CssLayout();
         Properties p = new Properties();
         try {
@@ -79,7 +81,7 @@ public class MainView extends HorizontalLayout implements View {
     {
         String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
         FileResource resourceTeam = new FileResource(new File( basepath + "/" +path ));
-        Image imageTeam = new Image("", resourceTeam);
+        Image imageTeam = new Image(viewName, resourceTeam);
         imageTeam.addStyleName(style);
         imageTeam.setWidth(width);
         imageTeam.setHeight(height);

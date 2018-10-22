@@ -15056,6 +15056,13 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
+.mytheme .border-grid {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	padding: 5px;
+}
+
 .mytheme .v-label-titre {
 	background: black;
 	color: white;

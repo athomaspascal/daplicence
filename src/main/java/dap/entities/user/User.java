@@ -21,19 +21,40 @@ import java.util.Set;
 @Entity
 public class User {
 
-    @NotNull
+
     @Id
-    @GeneratedValue
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
+    @Column(name = "NOM", nullable = false)
     private String Nom;
 
     @Past
+    @Column(name = "DATECREATION", nullable = false)
     private Date dateCreation;
 
     @NotNull
+    @Column(name = "MATRICULE", nullable = false)
     private int matricule;
+
+
+    /*
+    public long getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(long teamID) {
+        this.teamID = teamID;
+    }
+    */
+
+    /*
+    @NotNull
+    @Column(name = "TEAMID_ID", nullable = false)
+    private long teamID;
+    */
 
     @NotNull
     @Email
@@ -41,8 +62,10 @@ public class User {
 
     @NotNull
     @Size(min = 6, max = 100)
+    @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "ACTIVE", nullable = false)
     private Boolean active = true;
 
     @ManyToOne
@@ -71,6 +94,9 @@ public class User {
 
     public void setTeamid(Team teamid) {
         this.teamid = teamid;
+        /*
+        if (teamid !=null)
+            this.teamID = teamid.getId();*/
     }
 
     @ManyToOne
@@ -93,6 +119,7 @@ public class User {
         return id != null ? id.hashCode() : 0;
     }
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

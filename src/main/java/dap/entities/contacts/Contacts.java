@@ -12,7 +12,8 @@ public class Contacts {
 
     @NotNull
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = true, length = 50)
     private long id;
     @Basic
     @Column(name = "NAME", nullable = true, length = 50)
@@ -22,7 +23,7 @@ public class Contacts {
     private String contactEmail;
 
 
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }

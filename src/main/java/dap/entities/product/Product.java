@@ -1,9 +1,6 @@
 package dap.entities.product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author  .
@@ -13,11 +10,14 @@ import javax.persistence.Table;
 public class Product {
 
     @Id
-    @GeneratedValue
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "ADMIN", nullable = false)
     private Boolean admin;
 
     @Override
